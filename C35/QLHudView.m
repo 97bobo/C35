@@ -9,6 +9,8 @@
 #import "QLHudView.h"
 #import "DMAlertView.h"
 
+#define LGScreenWidth [UIScreen mainScreen].bounds.size.width
+#define LGScreenHeight [UIScreen mainScreen].bounds.size.height
 static CGFloat const AlerViewHeight = 64;
 
 @interface QLHudView()
@@ -58,7 +60,7 @@ static CGFloat const AlerViewHeight = 64;
     UILabel *contentL = [[UILabel alloc] initWithFrame:CGRectMake(20, 50, LGScreenWidth-40, rect.size.height)];
     contentL.text = message;
     contentL.font = [UIFont boldSystemFontOfSize:14];
-    contentL.textColor = WhiteColor;
+    contentL.textColor = [UIColor whiteColor];
     contentL.numberOfLines = 0;
     contentL.backgroundColor = [UIColor clearColor];
     [bgView addSubview:contentL];

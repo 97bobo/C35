@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -58,14 +59,137 @@
                     <view key="view" contentMode="scaleToFill" id="wHI-rs-4me">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5XT-Lb-4jq">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="af0-nE-Pei">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                        <color key="backgroundColor" red="0.0" green="0.68627450980000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="04V-ef-YAZ">
+                                        <rect key="frame" x="375" y="0.0" width="375" height="603"/>
+                                        <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="04V-ef-YAZ" secondAttribute="trailing" id="15A-t0-Nch"/>
+                                    <constraint firstItem="04V-ef-YAZ" firstAttribute="leading" secondItem="af0-nE-Pei" secondAttribute="trailing" id="8Kh-uY-3ti"/>
+                                    <constraint firstItem="04V-ef-YAZ" firstAttribute="top" secondItem="5XT-Lb-4jq" secondAttribute="top" id="CTm-vb-OSM"/>
+                                    <constraint firstItem="af0-nE-Pei" firstAttribute="leading" secondItem="5XT-Lb-4jq" secondAttribute="leading" id="FIW-9w-J9H"/>
+                                    <constraint firstItem="04V-ef-YAZ" firstAttribute="width" secondItem="af0-nE-Pei" secondAttribute="width" id="Wbm-5j-2YC"/>
+                                    <constraint firstAttribute="bottom" secondItem="04V-ef-YAZ" secondAttribute="bottom" id="dVw-AH-3Pg"/>
+                                    <constraint firstItem="af0-nE-Pei" firstAttribute="centerY" secondItem="5XT-Lb-4jq" secondAttribute="centerY" id="or8-WN-Sms"/>
+                                    <constraint firstItem="af0-nE-Pei" firstAttribute="top" secondItem="5XT-Lb-4jq" secondAttribute="top" id="wNN-9y-cFa"/>
+                                    <constraint firstAttribute="bottom" secondItem="af0-nE-Pei" secondAttribute="bottom" id="yzF-fh-ZfX"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="X29-Bt-sQN" firstAttribute="trailing" secondItem="5XT-Lb-4jq" secondAttribute="trailing" id="B84-fH-n8B"/>
+                            <constraint firstItem="5XT-Lb-4jq" firstAttribute="leading" secondItem="X29-Bt-sQN" secondAttribute="leading" id="Vsa-zl-Idu"/>
+                            <constraint firstItem="af0-nE-Pei" firstAttribute="width" secondItem="wHI-rs-4me" secondAttribute="width" id="eWl-rM-sKI"/>
+                            <constraint firstItem="5XT-Lb-4jq" firstAttribute="top" secondItem="X29-Bt-sQN" secondAttribute="top" id="fBA-mZ-H88"/>
+                            <constraint firstItem="X29-Bt-sQN" firstAttribute="bottom" secondItem="5XT-Lb-4jq" secondAttribute="bottom" id="twb-Kf-Pr2"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="X29-Bt-sQN"/>
                     </view>
                     <navigationItem key="navigationItem" id="y04-rq-FYu"/>
+                    <connections>
+                        <outlet property="leftView" destination="af0-nE-Pei" id="7N4-OK-FVK"/>
+                        <outlet property="rightView" destination="04V-ef-YAZ" id="3yx-3J-ecO"/>
+                        <segue destination="8l0-6M-2eL" kind="show" identifier="playGame" id="A0K-8J-8pm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XeM-WC-s99" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1818" y="-59"/>
+            <point key="canvasLocation" x="1816.8" y="-59.820089955022496"/>
+        </scene>
+        <!--Gaming View Controller-->
+        <scene sceneID="MQz-fE-Bcw">
+            <objects>
+                <viewController id="8l0-6M-2eL" customClass="GamingViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GwO-vd-1Q5">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CRT-IQ-fd6">
+                                <rect key="frame" x="0.0" y="124" width="375" height="375"/>
+                                <color key="backgroundColor" red="0.94509803920000002" green="0.97647058819999999" blue="0.99607843139999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="CRT-IQ-fd6" secondAttribute="height" multiplier="1:1" id="6QP-hD-vZF"/>
+                                </constraints>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Os0-Ip-dTb">
+                                <rect key="frame" x="30" y="507" width="315" height="100"/>
+                                <subviews>
+                                    <button opaque="NO" tag="1000" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q9b-rx-uYl" customClass="MyButton">
+                                        <rect key="frame" x="0.0" y="20" width="60" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="03X-NY-ZcA"/>
+                                            <constraint firstAttribute="width" constant="60" id="aOP-e9-BwS"/>
+                                        </constraints>
+                                        <state key="normal" backgroundImage="plus.png"/>
+                                        <connections>
+                                            <action selector="clickCalculationSymbol:" destination="8l0-6M-2eL" eventType="touchUpInside" id="p17-kQ-578"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="1001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yOC-vX-W09" customClass="MyButton">
+                                        <rect key="frame" x="85.5" y="20" width="59.5" height="60"/>
+                                        <state key="normal" backgroundImage="minus.png"/>
+                                        <connections>
+                                            <action selector="clickCalculationSymbol:" destination="8l0-6M-2eL" eventType="touchUpInside" id="HOP-Ut-Uf5"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="1002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2FL-fg-WyY" customClass="MyButton">
+                                        <rect key="frame" x="170" y="20" width="60" height="60"/>
+                                        <state key="normal" backgroundImage="multiple.png"/>
+                                        <connections>
+                                            <action selector="clickCalculationSymbol:" destination="8l0-6M-2eL" eventType="touchUpInside" id="iPN-mD-AyH"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="1003" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zdv-sM-0Lr" customClass="MyButton">
+                                        <rect key="frame" x="255.5" y="20" width="59.5" height="60"/>
+                                        <state key="normal" backgroundImage="divide.png"/>
+                                        <connections>
+                                            <action selector="clickCalculationSymbol:" destination="8l0-6M-2eL" eventType="touchUpInside" id="ST1-aN-L2u"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="2FL-fg-WyY" firstAttribute="height" secondItem="q9b-rx-uYl" secondAttribute="height" id="0YE-vb-5Cl"/>
+                                    <constraint firstItem="yOC-vX-W09" firstAttribute="width" secondItem="q9b-rx-uYl" secondAttribute="width" id="AqA-dB-A0U"/>
+                                    <constraint firstItem="2FL-fg-WyY" firstAttribute="width" secondItem="q9b-rx-uYl" secondAttribute="width" id="CUL-Jc-Jr9"/>
+                                    <constraint firstAttribute="height" constant="100" id="Omp-xX-LSr"/>
+                                    <constraint firstItem="zdv-sM-0Lr" firstAttribute="width" secondItem="q9b-rx-uYl" secondAttribute="width" id="ZPS-3s-EfL"/>
+                                    <constraint firstItem="yOC-vX-W09" firstAttribute="height" secondItem="q9b-rx-uYl" secondAttribute="height" id="Zvk-lI-6rb"/>
+                                    <constraint firstItem="zdv-sM-0Lr" firstAttribute="height" secondItem="q9b-rx-uYl" secondAttribute="height" id="sNA-f6-dRh"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="CRT-IQ-fd6" firstAttribute="leading" secondItem="YyD-ih-Peb" secondAttribute="leading" id="9Ev-Op-cW5"/>
+                            <constraint firstItem="Os0-Ip-dTb" firstAttribute="leading" secondItem="YyD-ih-Peb" secondAttribute="leading" constant="30" id="DtZ-mm-4GC"/>
+                            <constraint firstItem="CRT-IQ-fd6" firstAttribute="trailing" secondItem="YyD-ih-Peb" secondAttribute="trailing" id="Svo-y3-X50"/>
+                            <constraint firstItem="YyD-ih-Peb" firstAttribute="bottom" secondItem="Os0-Ip-dTb" secondAttribute="bottom" constant="60" id="ZmZ-WU-iqn"/>
+                            <constraint firstItem="YyD-ih-Peb" firstAttribute="trailing" secondItem="Os0-Ip-dTb" secondAttribute="trailing" constant="30" id="hsN-i8-PX6"/>
+                            <constraint firstItem="CRT-IQ-fd6" firstAttribute="top" secondItem="YyD-ih-Peb" secondAttribute="top" constant="60" id="ssF-vB-6TE"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="YyD-ih-Peb"/>
+                    </view>
+                    <connections>
+                        <outlet property="centerView" destination="CRT-IQ-fd6" id="npQ-xP-JHJ"/>
+                        <outlet property="divideB" destination="zdv-sM-0Lr" id="70s-nR-zuA"/>
+                        <outlet property="minusB" destination="yOC-vX-W09" id="Je9-al-ENN"/>
+                        <outlet property="multipleB" destination="2FL-fg-WyY" id="ph3-O3-2Fh"/>
+                        <outlet property="plusB" destination="q9b-rx-uYl" id="tS0-ik-4T2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qPP-IL-6cx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2669.5999999999999" y="329.68515742128938"/>
         </scene>
         <!--Speed List View Controller-->
         <scene sceneID="1VR-dY-wU5">
@@ -102,4 +226,10 @@
             <point key="canvasLocation" x="136" y="133.13343328335833"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="divide.png" width="240" height="240"/>
+        <image name="minus.png" width="240" height="240"/>
+        <image name="multiple.png" width="240" height="240"/>
+        <image name="plus.png" width="240" height="240"/>
+    </resources>
 </document>
