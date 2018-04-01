@@ -39,7 +39,6 @@
                                 <state key="normal" title="Speed Mode"/>
                                 <connections>
                                     <action selector="clickSpeedMode:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fhR-Cs-yaO"/>
-                                    <segue destination="WzW-gx-saY" kind="push" id="ofY-xp-h39"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -47,6 +46,9 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="Xdz-fx-gs8"/>
+                    <connections>
+                        <segue destination="wwv-AZ-A1y" kind="push" identifier="speedHomeVC" id="6ry-pt-LlP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -179,6 +181,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="YyD-ih-Peb"/>
                     </view>
+                    <navigationItem key="navigationItem" id="0wZ-VK-HBD"/>
                     <connections>
                         <outlet property="centerView" destination="CRT-IQ-fd6" id="npQ-xP-JHJ"/>
                         <outlet property="divideB" destination="zdv-sM-0Lr" id="70s-nR-zuA"/>
@@ -189,7 +192,82 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qPP-IL-6cx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2669.5999999999999" y="329.68515742128938"/>
+            <point key="canvasLocation" x="1706" y="628"/>
+        </scene>
+        <!--Speed Home View Controller-->
+        <scene sceneID="ITf-dX-bFV">
+            <objects>
+                <viewController id="wwv-AZ-A1y" customClass="SpeedHomeViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3Xr-WI-VF2">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="speed_home.png" translatesAutoresizingMaskIntoConstraints="NO" id="gPv-Sf-iJ3">
+                                <rect key="frame" x="40" y="114" width="294" height="168"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="gPv-Sf-iJ3" secondAttribute="height" multiplier="7:4" id="Enb-uY-aWJ"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Best" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7V7-7G-lJJ">
+                                <rect key="frame" x="167" y="332" width="41" height="26"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-----" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vs9-Cr-LjR">
+                                <rect key="frame" x="168" y="368" width="39" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="0.86563570209999996" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Best" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pha-TA-6FY">
+                                <rect key="frame" x="167" y="409" width="41" height="26"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-----" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pX1-Td-vhV">
+                                <rect key="frame" x="168" y="445" width="39" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="0.86563570209999996" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2St-Cn-6nj">
+                                <rect key="frame" x="50" y="506" width="275" height="93"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="2St-Cn-6nj" secondAttribute="height" multiplier="60.3:20.4" id="EBb-es-FdB"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="play.png"/>
+                                <connections>
+                                    <segue destination="8l0-6M-2eL" kind="push" identifier="gamingVC" id="c8T-vE-mSw"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="2St-Cn-6nj" firstAttribute="top" secondItem="pX1-Td-vhV" secondAttribute="bottom" constant="40" id="1sX-O6-GBC"/>
+                            <constraint firstItem="pha-TA-6FY" firstAttribute="centerX" secondItem="3Xr-WI-VF2" secondAttribute="centerX" id="7LZ-Zu-3a0"/>
+                            <constraint firstItem="pX1-Td-vhV" firstAttribute="centerX" secondItem="3Xr-WI-VF2" secondAttribute="centerX" id="A4h-YC-idM"/>
+                            <constraint firstItem="pX1-Td-vhV" firstAttribute="top" secondItem="pha-TA-6FY" secondAttribute="bottom" constant="10" id="B01-kX-eXd"/>
+                            <constraint firstItem="2St-Cn-6nj" firstAttribute="centerX" secondItem="3Xr-WI-VF2" secondAttribute="centerX" id="Is8-Lf-zyX"/>
+                            <constraint firstItem="vs9-Cr-LjR" firstAttribute="centerX" secondItem="3Xr-WI-VF2" secondAttribute="centerX" id="KAU-At-ZmA"/>
+                            <constraint firstItem="2St-Cn-6nj" firstAttribute="leading" secondItem="s3w-1l-lMK" secondAttribute="leading" constant="50" id="Paa-6U-UF0"/>
+                            <constraint firstItem="gPv-Sf-iJ3" firstAttribute="top" secondItem="s3w-1l-lMK" secondAttribute="top" constant="50" id="Ru1-ym-TEZ"/>
+                            <constraint firstItem="7V7-7G-lJJ" firstAttribute="centerX" secondItem="3Xr-WI-VF2" secondAttribute="centerX" id="bB3-5o-giW"/>
+                            <constraint firstItem="pha-TA-6FY" firstAttribute="top" secondItem="vs9-Cr-LjR" secondAttribute="bottom" constant="20" id="bBg-7r-RCE"/>
+                            <constraint firstItem="7V7-7G-lJJ" firstAttribute="top" secondItem="gPv-Sf-iJ3" secondAttribute="bottom" constant="50" id="ear-Kh-uzf"/>
+                            <constraint firstItem="vs9-Cr-LjR" firstAttribute="top" secondItem="7V7-7G-lJJ" secondAttribute="bottom" constant="10" id="kEX-QW-6ot"/>
+                            <constraint firstItem="s3w-1l-lMK" firstAttribute="trailing" secondItem="2St-Cn-6nj" secondAttribute="trailing" constant="50" id="siA-28-uHf"/>
+                            <constraint firstItem="gPv-Sf-iJ3" firstAttribute="centerX" secondItem="3Xr-WI-VF2" secondAttribute="centerX" id="waY-M3-xN8"/>
+                            <constraint firstItem="gPv-Sf-iJ3" firstAttribute="leading" secondItem="3Xr-WI-VF2" secondAttribute="leading" constant="40" id="y84-lY-6bR"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="s3w-1l-lMK"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="VbI-sI-zTB"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DxV-yo-Kp6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="943" y="788"/>
         </scene>
         <!--Speed List View Controller-->
         <scene sceneID="1VR-dY-wU5">
@@ -230,6 +308,11 @@
         <image name="divide.png" width="240" height="240"/>
         <image name="minus.png" width="240" height="240"/>
         <image name="multiple.png" width="240" height="240"/>
+        <image name="play.png" width="673" height="201"/>
         <image name="plus.png" width="240" height="240"/>
+        <image name="speed_home.png" width="805" height="460"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="c8T-vE-mSw"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		395C51722070986200F0BA30 /* SpeedHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 395C51712070986200F0BA30 /* SpeedHomeViewController.m */; };
+		395C5174207098CC00F0BA30 /* speed_home.png in Resources */ = {isa = PBXBuildFile; fileRef = 395C5173207098CC00F0BA30 /* speed_home.png */; };
+		395C517620709F5800F0BA30 /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = 395C517520709F5700F0BA30 /* play.png */; };
+		395C51782070A03A00F0BA30 /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = 395C51772070A03A00F0BA30 /* back.png */; };
 		E17372B7206DD6C1005425AC /* combine.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E17372AF206DD6C0005425AC /* combine.mp3 */; };
 		E17372B8206DD6C1005425AC /* background-music.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E17372B0206DD6C0005425AC /* background-music.mp3 */; };
 		E17372B9206DD6C1005425AC /* success.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E17372B1206DD6C0005425AC /* success.mp3 */; };
@@ -86,6 +90,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		395C51702070986200F0BA30 /* SpeedHomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpeedHomeViewController.h; sourceTree = "<group>"; };
+		395C51712070986200F0BA30 /* SpeedHomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpeedHomeViewController.m; sourceTree = "<group>"; };
+		395C5173207098CC00F0BA30 /* speed_home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = speed_home.png; sourceTree = "<group>"; };
+		395C517520709F5700F0BA30 /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play.png; sourceTree = "<group>"; };
+		395C51772070A03A00F0BA30 /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
 		E17372AF206DD6C0005425AC /* combine.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = combine.mp3; sourceTree = "<group>"; };
 		E17372B0206DD6C0005425AC /* background-music.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "background-music.mp3"; sourceTree = "<group>"; };
 		E17372B1206DD6C0005425AC /* success.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = success.mp3; sourceTree = "<group>"; };
@@ -214,6 +223,9 @@
 		E17372BF206DD73E005425AC /* Texture */ = {
 			isa = PBXGroup;
 			children = (
+				395C51772070A03A00F0BA30 /* back.png */,
+				395C517520709F5700F0BA30 /* play.png */,
+				395C5173207098CC00F0BA30 /* speed_home.png */,
 				E17372C0206DD73E005425AC /* wrong.png */,
 				E17372C1206DD73E005425AC /* plus.png */,
 				E17372C2206DD73E005425AC /* delete_disabled.png */,
@@ -301,6 +313,8 @@
 				E1CBB164206CFBBB0030871E /* GameListViewController.m */,
 				E1CBB166206CFF4D0030871E /* SpeedListViewController.h */,
 				E1CBB167206CFF4D0030871E /* SpeedListViewController.m */,
+				395C51702070986200F0BA30 /* SpeedHomeViewController.h */,
+				395C51712070986200F0BA30 /* SpeedHomeViewController.m */,
 				E1737307206DD84A005425AC /* GamingViewController.h */,
 				E1737308206DD84A005425AC /* GamingViewController.m */,
 				E1CBB137206CFA0E0030871E /* Main.storyboard */,
@@ -451,6 +465,7 @@
 				E1CBB13B206CFA0E0030871E /* Assets.xcassets in Resources */,
 				E17372FA206DD73E005425AC /* jiantou.png in Resources */,
 				E17372FC206DD73E005425AC /* line.png in Resources */,
+				395C517620709F5800F0BA30 /* play.png in Resources */,
 				E17372F6206DD73E005425AC /* plus_selected.png in Resources */,
 				E17372BC206DD6C1005425AC /* card.mp3 in Resources */,
 				E17372FB206DD73E005425AC /* yellowpint.png in Resources */,
@@ -472,6 +487,7 @@
 				E17372BA206DD6C1005425AC /* reset.mp3 in Resources */,
 				E1737303206DD73E005425AC /* bg.png in Resources */,
 				E17372B9206DD6C1005425AC /* success.mp3 in Resources */,
+				395C51782070A03A00F0BA30 /* back.png in Resources */,
 				E1737306206DD73E005425AC /* close.png in Resources */,
 				E17372EA206DD73E005425AC /* divide.png in Resources */,
 				E17372EC206DD73E005425AC /* home.png in Resources */,
@@ -479,6 +495,7 @@
 				E17372F5206DD73E005425AC /* normal.png in Resources */,
 				E17372F7206DD73E005425AC /* waiting.png in Resources */,
 				E17372EE206DD73E005425AC /* levelSprites.png in Resources */,
+				395C5174207098CC00F0BA30 /* speed_home.png in Resources */,
 				E17372FD206DD73E005425AC /* lightdown.png in Resources */,
 				E1CBB139206CFA0E0030871E /* Main.storyboard in Resources */,
 				E17372F1206DD73E005425AC /* minus.png in Resources */,
@@ -516,6 +533,7 @@
 				E1737311206E1642005425AC /* DMAlertView.m in Sources */,
 				E1CBB141206CFA0E0030871E /* main.m in Sources */,
 				E1CBB133206CFA0E0030871E /* AppDelegate.m in Sources */,
+				395C51722070986200F0BA30 /* SpeedHomeViewController.m in Sources */,
 				E1737317206E41CC005425AC /* UIView+frame.m in Sources */,
 				E1737309206DD84A005425AC /* GamingViewController.m in Sources */,
 			);

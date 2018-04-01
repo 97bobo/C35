@@ -11,4 +11,7 @@
 
 @interface GamingViewController : UIViewController
 
+
+@property (nonatomic,assign) BOOL  isNeedTimer;
+
 @end

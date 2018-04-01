@@ -28,7 +28,7 @@
 
 - (IBAction)clickSpeedMode:(UIButton *)sender {
     
-    
+    [self performSegueWithIdentifier:@"speedHomeVC" sender:nil];
     
 }
 
