@@ -13,5 +13,8 @@
 
 
 @property (nonatomic,assign) BOOL  isNeedTimer;
+@property (nonatomic,strong) NSDictionary *questionDic;
+@property (nonatomic,strong) NSString *stageStr;
+@property (nonatomic,strong) NSMutableArray *questionArr;
 
 @end

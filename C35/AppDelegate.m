@@ -17,6 +17,13 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:stageValue]  == nil) {
+        //保存一个闯关模式成绩
+        [[NSUserDefaults standardUserDefaults] setObject:@"0" forKey:stageValue];
+        
+    }
+    
     return YES;
 }
 

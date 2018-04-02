@@ -7,14 +7,11 @@
 //
 
 #import "GamingViewController.h"
+#import "SuccessedViewController.h"
 #import "MyButton.h"
 #import "QLHudView.h"
 #import "UIView+frame.h"
 #import <AVFoundation/AVFoundation.h>
-#define screenSize [UIScreen mainScreen].bounds.size
-#define lineSpace 25
-#define LGRGBColor(r, g, b) LGRGBColorAlpha(r, g, b, 1.0)
-#define LGRGBColorAlpha(r, g, b, a) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:a]
 
 typedef enum : NSUInteger {
     CalculationTypeNull,//表示没有选中运算方式
@@ -30,6 +27,11 @@ typedef enum : NSUInteger {
 @property (weak, nonatomic) IBOutlet UIButton *minusB;
 @property (weak, nonatomic) IBOutlet UIButton *multipleB;
 @property (weak, nonatomic) IBOutlet UIButton *divideB;
+@property (weak, nonatomic) IBOutlet UILabel *progressL;
+@property (weak, nonatomic) IBOutlet UILabel *timeL;
+@property (nonatomic,strong) NSTimer *timer;
+@property (weak, nonatomic) IBOutlet UIView *tipsView;
+@property (nonatomic,strong) MyButton *answerB;
 
 @end
 
@@ -49,7 +51,9 @@ typedef enum : NSUInteger {
     UIView *_metionView;
     SystemSoundID soundFileObject;
     AVAudioPlayer *_player;
-    
+    NSInteger timerCount;
+    NSInteger replaceCount;
+    NSInteger metionCount;
 }
 
 - (void)viewDidLoad {
@@ -57,10 +61,25 @@ typedef enum : NSUInteger {
     
     count = 0;
     
-    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"sourceData" ofType:@"plist"];
-    dataArr = [[NSMutableArray alloc] initWithContentsOfFile:filePath];
-    dic = dataArr.firstObject;
-    currentNumbers = dic[@"numberArr"];
+    self.questionArr = @[].mutableCopy;
+    
+    if (_isNeedTimer) {
+        NSString *filePath = [[NSBundle mainBundle] pathForResource:@"sourceData" ofType:@"plist"];
+        NSMutableArray *dataArray = [[NSMutableArray alloc] initWithContentsOfFile:filePath];
+        for (int randomCount=0; randomCount<10; randomCount++) {
+            
+            NSDictionary *dic = dataArray[arc4random()%32];
+            [self.questionArr addObject:dic];
+        }
+        self.questionDic = self.questionArr.firstObject;
+        currentNumbers = self.questionDic[@"numberArr"];
+    }else{
+        
+        currentNumbers = self.questionDic[@"numberArr"];
+        self.tipsView.hidden = YES;
+    }
+    
+    
     
     [self createGameButton:4 superView:self.centerView];
     
@@ -75,6 +94,13 @@ typedef enum : NSUInteger {
         [self playSoundEffect:@"background-music" type:@"mp3"];
     });
     
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [_player stop];
+    _player = nil;
 }
 
 -(void)customNavigationView
@@ -96,6 +122,7 @@ typedef enum : NSUInteger {
         timeL.font = [UIFont boldSystemFontOfSize:25];
         timeL.textColor = [UIColor orangeColor];
         [navigationView addSubview:timeL];
+        self.timeL = timeL;
         
         UILabel *progressL = [[UILabel alloc] initWithFrame:CGRectMake(backB.xql_right+5, timeL.xql_bottom, 100, 20)];
         progressL.text = @"1/10";
@@ -103,10 +130,12 @@ typedef enum : NSUInteger {
 //        progressL.font = [UIFont boldSystemFontOfSize:25];
         progressL.textColor = LGRGBColor(120, 162, 168);
         [navigationView addSubview:progressL];
+        self.progressL = progressL;
         
         NSTimer *timer = [NSTimer timerWithTimeInterval:0.1 repeats:YES block:^(NSTimer * _Nonnull timer) {
             timeL.text = [NSString stringWithFormat:@"%.1f s",timeL.text.floatValue+0.1];
         }];
+        self.timer = timer;
         [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
         
     }else{
@@ -119,9 +148,26 @@ typedef enum : NSUInteger {
     
     
     MyButton *answerB = [MyButton buttonWithType:UIButtonTypeCustom];
+    self.answerB = answerB;
     answerB.frame = CGRectMake(navigationView.xql_width-50, 25, 50, 50);
-    [answerB setImage:[UIImage imageNamed:@"tips.png"] forState:UIControlStateNormal];
+    [answerB setBackgroundImage:[UIImage imageNamed:_isNeedTimer?@"delete.png":@"tips.png"] forState:UIControlStateNormal];
     [answerB addTarget:self action:@selector(metion:) forControlEvents:UIControlEventTouchUpInside];
+    
+    answerB.titleLabel.font = [UIFont boldSystemFontOfSize:18];
+    metionCount = [[[NSUserDefaults standardUserDefaults] valueForKey:tipsCount] integerValue];
+    if (_isNeedTimer) {
+        
+        [answerB setTitle:@"3" forState:UIControlStateNormal];
+    }else{
+        
+        [self.answerB setTitle:[NSString stringWithFormat:@"%ld",3-metionCount] forState:UIControlStateNormal];
+    }
+    if (metionCount == 3) {
+        
+        [self.answerB setBackgroundImage:[UIImage imageNamed:@"tips_disabled.png"] forState:UIControlStateNormal];
+        self.answerB.userInteractionEnabled = NO;
+    }
+    
     
     [navigationView addSubview:answerB];
     
@@ -141,14 +187,50 @@ typedef enum : NSUInteger {
     for (UIView *view in self.centerView.subviews) {
         [view removeFromSuperview];
     }
-    dic = dataArr.lastObject;
-    currentNumbers = dic[@"numberArr"];
+    currentSelectedNumberB = nil;
+    currentCalculationType = CalculationTypeNull;
+    currentResultNumber = 0;
+    count = 0;
     [self createGameButton:4 superView:self.centerView];
     
 }
 
 -(void)metion:(MyButton *)sender
 {
+    if (_isNeedTimer) {
+        
+        replaceCount++;
+        
+        [self.answerB setTitle:[NSString stringWithFormat:@"%ld",3-replaceCount] forState:UIControlStateNormal];
+        NSString *filePath = [[NSBundle mainBundle] pathForResource:@"replaceQuestions" ofType:@"plist"];
+        NSMutableArray *dataArr = [[NSMutableArray alloc] initWithContentsOfFile:filePath];
+        NSDictionary *dic = dataArr[arc4random()%dataArr.count];
+        [self.questionArr replaceObjectAtIndex:[self.questionArr indexOfObject:self.questionDic] withObject:dic];
+        self.questionDic = dic;
+        currentNumbers = self.questionDic[@"numberArr"];
+        [self refresh:nil];
+        if (replaceCount == 3) {
+            [self.answerB setBackgroundImage:[UIImage imageNamed:@"delete_disabled.png"] forState:UIControlStateNormal];
+            self.answerB.userInteractionEnabled = NO;
+            return;
+        }
+        return;
+    }
+    
+    
+    if ([[[NSUserDefaults standardUserDefaults] valueForKey:tipsCount] integerValue]) {
+        
+        metionCount = [[[NSUserDefaults standardUserDefaults] valueForKey:tipsCount] integerValue];
+    }else{
+        
+    }
+    
+    
+    metionCount++;
+    [[NSUserDefaults standardUserDefaults] setValue:@(metionCount) forKey:tipsCount];
+    
+    [self.answerB setTitle:[NSString stringWithFormat:@"%ld",3-metionCount] forState:UIControlStateNormal];
+    
     UIView *bgView = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
     bgView.backgroundColor = [UIColor clearColor];
     _bgView = bgView;
@@ -169,9 +251,14 @@ typedef enum : NSUInteger {
     answerView.center = CGPointMake(metionView.xql_width*0.5, metionView.xql_height*0.5+30);
     [metionView addSubview:answerView];
     
+//    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"sourceData" ofType:@"plist"];
+//    NSMutableArray *dataArr = [[NSMutableArray alloc] initWithContentsOfFile:filePath];
+//    
+//    NSDictionary *dict = dataArr[self.stageStr.integerValue];
+    
     UILabel *answerL = [[UILabel alloc] initWithFrame:answerView.bounds];
-    answerL.text = @"(4+3)x(8-3)";
-    answerL.font = [UIFont boldSystemFontOfSize:30];
+    answerL.text = self.questionDic[@"result"];
+    answerL.font = [UIFont boldSystemFontOfSize:20];
     answerL.textAlignment = NSTextAlignmentCenter;
     answerL.textColor = [UIColor greenColor];
     [answerView addSubview:answerL];
@@ -193,6 +280,12 @@ typedef enum : NSUInteger {
 //        metionView.center = bgView.center;
 //        closeB.frame = CGRectMake(metionView.xql_width-40, 10, 30, 30);
 //    }];
+    
+    
+    if (metionCount == 3) {
+        [self.answerB setBackgroundImage:[UIImage imageNamed:@"tips_disabled"] forState:UIControlStateNormal];
+        self.answerB.userInteractionEnabled = NO;
+    }
     
 }
 
@@ -341,10 +434,37 @@ typedef enum : NSUInteger {
         }];
         
         if (count == 3) {
-            if (currentResultNumber == 35) {
+            if (currentResultNumber == 35) {//计算成功!!!
                 [QLHudView showAlertViewWithText:@"Success,Congratulations!!!" duration:2.f];
+                
                 [UIView animateWithDuration:0.5 animations:^{
                     currentSelectedNumberB.frame = CGRectMake(self.centerView.frame.size.width*0.5-currentSelectedNumberB.frame.size.width*0.5, self.centerView.frame.size.height*0.5-currentSelectedNumberB.frame.size.height*0.5, currentSelectedNumberB.frame.size.width, currentSelectedNumberB.frame.size.height);
+                } completion:^(BOOL finished) {
+                    if (finished) {
+                        
+                        if (!_isNeedTimer) {
+                            [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%ld",self.stageStr.integerValue+1] forKey:stageValue];
+                            [[NSUserDefaults standardUserDefaults] synchronize];
+                            [[NSNotificationCenter defaultCenter] postNotificationName:CompletedGameNotification object:nil];
+                            [self performSegueWithIdentifier:@"successed" sender:nil];
+                            [self.navigationController popViewControllerAnimated:NO];
+                        }else{//计时模式,在取好的十道题中依次展示
+                            timerCount++;
+                            if (timerCount==10) {
+                                [self.timer invalidate];
+                                self.progressL.text = [NSString stringWithFormat:@"%ld/10",timerCount];
+                                [[NSUserDefaults standardUserDefaults] setObject:self.timeL.text forKey:bestTime];
+                                [[NSUserDefaults standardUserDefaults]synchronize];
+                                return ;
+                            }
+                            self.questionDic = self.questionArr[timerCount];
+                            currentNumbers = self.questionDic[@"numberArr"];
+                            [self refresh:nil];
+                            
+                            self.progressL.text = [NSString stringWithFormat:@"%ld/10",timerCount+1];
+                            
+                        }
+                    }
                 }];
                 //继续显示下一道题
                 
@@ -426,7 +546,7 @@ typedef enum : NSUInteger {
     [_player prepareToPlay];
     [_player play];
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(62 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(60 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [_player play];
     });
     
@@ -438,6 +558,20 @@ typedef enum : NSUInteger {
 //
 //    AudioServicesPlaySystemSound(soundFileObject);
     
+}
+
+
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    // segue.identifier：获取连线的ID
+    if ([segue.identifier isEqualToString:@"gamingVC"]) {
+        // segue.destinationViewController：获取连线时所指的界面（VC）
+        SuccessedViewController *receive = segue.destinationViewController;
+//        receive.isNeedTimer = YES;
+        // 这里不需要指定跳转了，因为在按扭的事件里已经有跳转的代码
+        //        [self.navigationController pushViewController:receive animated:YES];
+    }
 }
 
 
