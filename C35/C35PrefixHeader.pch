@@ -13,6 +13,9 @@
 // Include any system framework and library headers here that should be included in all compilation units.
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
 
+
+#define LGScreenWidth [UIScreen mainScreen].bounds.size.width
+#define LGScreenHeight [UIScreen mainScreen].bounds.size.height
 #define screenSize [UIScreen mainScreen].bounds.size
 #define lineSpace 25
 #define LGRGBColor(r, g, b) LGRGBColorAlpha(r, g, b, 1.0)
@@ -27,5 +30,9 @@
 
 static NSString * const CompletedGameNotification = @"CompletedGameNotification";
 static NSString * const NextGameNotification = @"NextGameNotification";
+static NSString * const LGNotificationKey = @"LGNotificationKey";
+static NSString * const LGNotificationReceiveNotification = @"LGNotificationReceiveNotification";
+
+
 
 #endif /* C35PrefixHeader_pch */

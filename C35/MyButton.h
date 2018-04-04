@@ -12,6 +12,7 @@ typedef enum : NSUInteger {
     SoundTypeNormal,
     SoundTypeFail,
     SoundTypeSuccess,
+    SoundTypeCard,
 } SoundType;
 
 @interface MyButton : UIButton

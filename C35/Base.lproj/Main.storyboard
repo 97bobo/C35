@@ -14,7 +14,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                <viewController restorationIdentifier="GameHomeVC" storyboardIdentifier="GameHomeVC" id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -77,13 +77,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5XT-Lb-4jq">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="453"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="04V-ef-YAZ">
-                                        <rect key="frame" x="375" y="100" width="375" height="403"/>
+                                        <rect key="frame" x="375" y="100" width="375" height="253"/>
                                     </view>
-                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="af0-nE-Pei">
-                                        <rect key="frame" x="8" y="80" width="375" height="443"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="af0-nE-Pei">
+                                        <rect key="frame" x="0.0" y="100" width="375" height="253"/>
                                     </view>
                                 </subviews>
                                 <constraints>
@@ -123,10 +123,10 @@
                             <constraint firstItem="X29-Bt-sQN" firstAttribute="trailing" secondItem="5LH-77-oWv" secondAttribute="trailing" id="QXa-os-90f"/>
                             <constraint firstItem="O7b-MH-gap" firstAttribute="centerX" secondItem="5LH-77-oWv" secondAttribute="centerX" id="UW5-uv-7Jr"/>
                             <constraint firstItem="5XT-Lb-4jq" firstAttribute="leading" secondItem="X29-Bt-sQN" secondAttribute="leading" id="Vsa-zl-Idu"/>
+                            <constraint firstItem="X29-Bt-sQN" firstAttribute="bottom" secondItem="5XT-Lb-4jq" secondAttribute="bottom" constant="150" id="csV-6o-RLe"/>
                             <constraint firstItem="af0-nE-Pei" firstAttribute="width" secondItem="wHI-rs-4me" secondAttribute="width" id="eWl-rM-sKI"/>
                             <constraint firstItem="5XT-Lb-4jq" firstAttribute="top" secondItem="X29-Bt-sQN" secondAttribute="top" id="fBA-mZ-H88"/>
                             <constraint firstItem="O7b-MH-gap" firstAttribute="width" secondItem="5LH-77-oWv" secondAttribute="width" id="hnW-a6-m37"/>
-                            <constraint firstItem="X29-Bt-sQN" firstAttribute="bottom" secondItem="5XT-Lb-4jq" secondAttribute="bottom" id="twb-Kf-Pr2"/>
                             <constraint firstItem="O7b-MH-gap" firstAttribute="height" secondItem="5LH-77-oWv" secondAttribute="height" id="xrS-wF-eiN"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="X29-Bt-sQN"/>
@@ -500,6 +500,6 @@
         <image name="title.png" width="478" height="204"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="c8T-vE-mSw"/>
+        <segue reference="A0K-8J-8pm"/>
     </inferredMetricsTieBreakers>
 </document>

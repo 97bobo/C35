@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import <AVOSCloud.h>
 
 @interface ViewController ()
 
@@ -23,6 +24,10 @@
 - (IBAction)clickStageMode:(UIButton *)sender {
     
 //    [self performSegueWithIdentifier:@"pushdemo" sender:sender];
+    
+    AVObject *testObject = [AVObject objectWithClassName:@"TestObject"];
+    [testObject setObject:@"bar" forKey:@"foo"];
+    [testObject save];
     
 }
 

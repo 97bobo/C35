@@ -126,16 +126,17 @@
             if (i+16==stage) {//代表当前要解的题目
                 btn.userInteractionEnabled = YES;
                 [btn setBackgroundImage:[UIImage imageNamed:@"unlockIcon.png"] forState:UIControlStateNormal];
+                [btn setTitle:[NSString stringWithFormat:@"%d",i+16] forState:UIControlStateNormal];
             }else if (i+16<stage){//代表已经解过的题目
                 
                 btn.userInteractionEnabled = YES;
                 [btn setBackgroundImage:[UIImage imageNamed:@"successed.png"] forState:UIControlStateNormal];
+                [btn setTitle:[NSString stringWithFormat:@"%d",i+16] forState:UIControlStateNormal];
                 
             }else{//代表还未解锁的题目
                 [btn setBackgroundImage:[UIImage imageNamed:@"lockIcon.png"] forState:UIControlStateNormal];
             }
             
-            [btn setTitle:[NSString stringWithFormat:@"%d",i+16] forState:UIControlStateNormal];
             
         }
         

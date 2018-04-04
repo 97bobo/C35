@@ -16,7 +16,7 @@
 
 -(void)addTarget:(id)target action:(SEL)action forControlEvents:(UIControlEvents)controlEvents withSoundType:(SoundType)type
 {
-    
+    _type = type;
     [self addTarget:target action:action forControlEvents:controlEvents];
     
 }
@@ -35,6 +35,9 @@
             break;
         case SoundTypeSuccess:
             name = @"success";
+            break;
+        case SoundTypeCard:
+            name = @"card";
             break;
             
     }

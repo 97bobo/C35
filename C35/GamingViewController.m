@@ -172,7 +172,7 @@ typedef enum : NSUInteger {
     [navigationView addSubview:answerB];
     
     
-    MyButton *refreshB = [MyButton buttonWithType:UIButtonTypeCustom];
+    UIButton *refreshB = [UIButton buttonWithType:UIButtonTypeCustom];
     refreshB.frame = CGRectMake(answerB.xql_left-50, 25, 50, 50);
     [refreshB setImage:[UIImage imageNamed:@"reset.png"] forState:UIControlStateNormal];
     [refreshB addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventTouchUpInside];
@@ -182,7 +182,7 @@ typedef enum : NSUInteger {
     [self.view addSubview:navigationView];
 }
 
--(void)refresh:(MyButton *)sender
+-(void)refresh:(UIButton *)sender
 {
     for (UIView *view in self.centerView.subviews) {
         [view removeFromSuperview];
@@ -192,6 +192,7 @@ typedef enum : NSUInteger {
     currentResultNumber = 0;
     count = 0;
     [self createGameButton:4 superView:self.centerView];
+    [self playButtonSoundName:@"reset" type:@"mp3"];
     
 }
 
@@ -232,7 +233,9 @@ typedef enum : NSUInteger {
     [self.answerB setTitle:[NSString stringWithFormat:@"%ld",3-metionCount] forState:UIControlStateNormal];
     
     UIView *bgView = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    bgView.backgroundColor = [UIColor clearColor];
+    bgView.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.5];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(closeMetion:)];
+    [bgView addGestureRecognizer:tap];
     _bgView = bgView;
     
     UIView *metionView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 300, 300)];
@@ -247,7 +250,8 @@ typedef enum : NSUInteger {
     [self createImagesView:_metionView];
     
     UIView *answerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 200, 80)];
-    answerView.backgroundColor = [UIColor lightGrayColor];
+    answerView.backgroundColor = LGRGBColor(241, 241, 241);
+    answerView.layer.cornerRadius = 5.f;
     answerView.center = CGPointMake(metionView.xql_width*0.5, metionView.xql_height*0.5+30);
     [metionView addSubview:answerView];
     
@@ -260,7 +264,7 @@ typedef enum : NSUInteger {
     answerL.text = self.questionDic[@"result"];
     answerL.font = [UIFont boldSystemFontOfSize:20];
     answerL.textAlignment = NSTextAlignmentCenter;
-    answerL.textColor = [UIColor greenColor];
+    answerL.textColor = LGRGBColor(100, 240, 100);
     [answerView addSubview:answerL];
     
     
@@ -283,7 +287,7 @@ typedef enum : NSUInteger {
     
     
     if (metionCount == 3) {
-        [self.answerB setBackgroundImage:[UIImage imageNamed:@"tips_disabled"] forState:UIControlStateNormal];
+        [self.answerB setBackgroundImage:[UIImage imageNamed:@"tips_disabled.png"] forState:UIControlStateNormal];
         self.answerB.userInteractionEnabled = NO;
     }
     
@@ -327,7 +331,7 @@ typedef enum : NSUInteger {
         [btn setBackgroundImage:[UIImage imageNamed:@"pressed.png"] forState:UIControlStateSelected];
 //        btn.layer.cornerRadius = 5;
         [btn setTitle:currentNumbers[i] forState:UIControlStateNormal];
-        [btn addTarget:self action:@selector(selectOneNumbner:) forControlEvents:UIControlEventTouchUpInside withSoundType:SoundTypeNormal];
+        [btn addTarget:self action:@selector(selectOneNumbner:) forControlEvents:UIControlEventTouchUpInside withSoundType:SoundTypeCard];
         [superView addSubview:btn];
     }
 }
@@ -435,8 +439,8 @@ typedef enum : NSUInteger {
         
         if (count == 3) {
             if (currentResultNumber == 35) {//计算成功!!!
-                [QLHudView showAlertViewWithText:@"Success,Congratulations!!!" duration:2.f];
-                
+//                [QLHudView showAlertViewWithText:@"Success,Congratulations!!!" duration:2.f];
+                [self playButtonSoundName:@"success" type:@"mp3"];
                 [UIView animateWithDuration:0.5 animations:^{
                     currentSelectedNumberB.frame = CGRectMake(self.centerView.frame.size.width*0.5-currentSelectedNumberB.frame.size.width*0.5, self.centerView.frame.size.height*0.5-currentSelectedNumberB.frame.size.height*0.5, currentSelectedNumberB.frame.size.width, currentSelectedNumberB.frame.size.height);
                 } completion:^(BOOL finished) {
@@ -469,7 +473,9 @@ typedef enum : NSUInteger {
                 //继续显示下一道题
                 
             }else{
-                [QLHudView showAlertViewWithText:@"Wrong!!!" duration:2.f];
+//                [QLHudView showAlertViewWithText:@"Wrong!!!" duration:2.f];
+                
+                [self playButtonSoundName:@"wrong" type:@"mp3"];
                 [currentSelectedNumberB setBackgroundImage:[UIImage imageNamed:@"wrong.png"] forState:UIControlStateNormal];
                 [currentSelectedNumberB setBackgroundImage:[UIImage imageNamed:@"wrong.png"] forState:UIControlStateSelected];
             }
@@ -573,6 +579,26 @@ typedef enum : NSUInteger {
         //        [self.navigationController pushViewController:receive animated:YES];
     }
 }
+- (void)playButtonSoundName:(NSString*)name type:(NSString*)type
 
+{
+    
+    //得到音效文件的地址
+    
+    NSString*soundFilePath =[[NSBundle mainBundle]pathForResource:name ofType:type];
+    
+    //将地址字符串转换成url
+    
+    NSURL*soundURL = [NSURL fileURLWithPath:soundFilePath];
+    
+    //生成系统音效id
+    
+    AudioServicesCreateSystemSoundID((__bridge CFURLRef)soundURL, &soundFileObject);
+    
+    //播放系统音效
+    
+    AudioServicesPlaySystemSound(soundFileObject);
+    
+}
 
 @end
