@@ -7,6 +7,7 @@
 //
 
 #import "LGWebViewController.h"
+#import "NetStatusManager.h"
 
 @interface LGWebViewController ()<WKNavigationDelegate,WKUIDelegate,UINavigationControllerDelegate,UIGestureRecognizerDelegate>
 
@@ -41,6 +42,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    NetStatusManager *netManager = [NetStatusManager manager];
+    if (netManager.currentStatus == NotReachable) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"No NetWork!" message:nil preferredStyle:UIAlertControllerStyleAlert] ;
+        UIAlertAction *actin = [UIAlertAction actionWithTitle:@"Sure" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+
+        }];
+        [alert addAction:actin];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            
+            [self.view.window.rootViewController presentViewController:alert animated:YES completion:nil];
+        });
+    }
     
     self.navigationItem.title = @"用户协议";
     

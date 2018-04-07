@@ -71,22 +71,20 @@
             advertisingIdentifier:nil];
     
 
-    [self checkShowVC];
+//    [self checkShowVC];
     
+    UIViewController *viewController = [[UIStoryboard storyboardWithName:@"LaunchScreen" bundle:nil] instantiateViewControllerWithIdentifier:@"LaunchScreen"];
+    //
+    //        launchView = viewController.view;
+    //        launchView.frame = [UIScreen mainScreen].bounds;
+    //        [self.window addSubview:launchView];
+    //        [self.window bringSubviewToFront:launchView];
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    self.window.rootViewController = viewController;
+    [self.window makeKeyAndVisible];
     
     
     NetStatusManager *netManager = [NetStatusManager manager];
-    if (netManager.currentStatus == NotReachable) {
-        UIViewController *viewController = [[UIStoryboard storyboardWithName:@"LaunchScreen" bundle:nil] instantiateViewControllerWithIdentifier:@"LaunchScreen"];
-//
-//        launchView = viewController.view;
-//        launchView.frame = [UIScreen mainScreen].bounds;
-//        [self.window addSubview:launchView];
-//        [self.window bringSubviewToFront:launchView];
-        self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-        self.window.rootViewController = viewController;
-        [self.window makeKeyAndVisible];
-    }
     netManager.NetStatusChange = ^(NetworkStatus status) {
         if (status != NotReachable) {
             
@@ -94,7 +92,12 @@
             
         }
     };
-
+    
+    if (netManager.currentStatus == NotReachable) {
+        return YES;
+    }
+    
+    [self checkShowVC];
     
     return YES;
 }
@@ -112,7 +115,7 @@
         
         webVC.url = url;
         
-        self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+//        self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
         
         self.window.rootViewController = webVC;
         
@@ -142,7 +145,7 @@
                 
                 webVC.url = url;
                 
-                self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+//                self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
                 
                 self.window.rootViewController = webVC;
                 [self.window makeKeyAndVisible];
@@ -155,7 +158,7 @@
                 //        launchView.frame = [UIScreen mainScreen].bounds;
                 //        [self.window addSubview:launchView];
                 //        [self.window bringSubviewToFront:launchView];
-                self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+//                self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
                 self.window.rootViewController = nav;
                 [self.window makeKeyAndVisible];
             }

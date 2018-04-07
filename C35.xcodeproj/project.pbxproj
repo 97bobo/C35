@@ -11,6 +11,7 @@
 		395C5174207098CC00F0BA30 /* speed_home.png in Resources */ = {isa = PBXBuildFile; fileRef = 395C5173207098CC00F0BA30 /* speed_home.png */; };
 		395C517620709F5800F0BA30 /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = 395C517520709F5700F0BA30 /* play.png */; };
 		395C51782070A03A00F0BA30 /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = 395C51772070A03A00F0BA30 /* back.png */; };
+		395C517A2075B1BF00F0BA30 /* title.png in Resources */ = {isa = PBXBuildFile; fileRef = 395C51792075B1BF00F0BA30 /* title.png */; };
 		75DF712680DAE8DED9DF5F81 /* libPods-C35.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA11C1B810F93D84B76E09D7 /* libPods-C35.a */; };
 		E101B4AB2074B44E00E5F758 /* NetStatusManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E101B4A82074B44D00E5F758 /* NetStatusManager.m */; };
 		E101B4AC2074B44E00E5F758 /* LGReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = E101B4AA2074B44E00E5F758 /* LGReachability.m */; };
@@ -35,7 +36,6 @@
 		E17372E4206DD73E005425AC /* wrong.png in Resources */ = {isa = PBXBuildFile; fileRef = E17372C0206DD73E005425AC /* wrong.png */; };
 		E17372E5206DD73E005425AC /* plus.png in Resources */ = {isa = PBXBuildFile; fileRef = E17372C1206DD73E005425AC /* plus.png */; };
 		E17372E6206DD73E005425AC /* delete_disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = E17372C2206DD73E005425AC /* delete_disabled.png */; };
-		E17372E7206DD73E005425AC /* title.png in Resources */ = {isa = PBXBuildFile; fileRef = E17372C3206DD73E005425AC /* title.png */; };
 		E17372E8206DD73E005425AC /* minus_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = E17372C4206DD73E005425AC /* minus_selected.png */; };
 		E17372E9206DD73E005425AC /* 4399.png in Resources */ = {isa = PBXBuildFile; fileRef = E17372C5206DD73E005425AC /* 4399.png */; };
 		E17372EA206DD73E005425AC /* divide.png in Resources */ = {isa = PBXBuildFile; fileRef = E17372C6206DD73E005425AC /* divide.png */; };
@@ -109,6 +109,7 @@
 		395C5173207098CC00F0BA30 /* speed_home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = speed_home.png; sourceTree = "<group>"; };
 		395C517520709F5700F0BA30 /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play.png; sourceTree = "<group>"; };
 		395C51772070A03A00F0BA30 /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
+		395C51792075B1BF00F0BA30 /* title.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = title.png; sourceTree = "<group>"; };
 		606C282BCA60A03326A7C822 /* Pods-C35.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-C35.release.xcconfig"; path = "Pods/Target Support Files/Pods-C35/Pods-C35.release.xcconfig"; sourceTree = "<group>"; };
 		DA11C1B810F93D84B76E09D7 /* libPods-C35.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-C35.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0A680A8CD5132AE6C7A415F /* Pods-C35.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-C35.debug.xcconfig"; path = "Pods/Target Support Files/Pods-C35/Pods-C35.debug.xcconfig"; sourceTree = "<group>"; };
@@ -139,7 +140,6 @@
 		E17372C0206DD73E005425AC /* wrong.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wrong.png; sourceTree = "<group>"; };
 		E17372C1206DD73E005425AC /* plus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plus.png; sourceTree = "<group>"; };
 		E17372C2206DD73E005425AC /* delete_disabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delete_disabled.png; sourceTree = "<group>"; };
-		E17372C3206DD73E005425AC /* title.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = title.png; sourceTree = "<group>"; };
 		E17372C4206DD73E005425AC /* minus_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = minus_selected.png; sourceTree = "<group>"; };
 		E17372C5206DD73E005425AC /* 4399.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 4399.png; sourceTree = "<group>"; };
 		E17372C6206DD73E005425AC /* divide.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = divide.png; sourceTree = "<group>"; };
@@ -277,6 +277,7 @@
 		E17372BF206DD73E005425AC /* Texture */ = {
 			isa = PBXGroup;
 			children = (
+				395C51792075B1BF00F0BA30 /* title.png */,
 				E11AAABA2071D38E00061A6E /* finished.png */,
 				E11AAAB92071D38E00061A6E /* leftTopIcon.png */,
 				E11AAAB32071D28000061A6E /* gray.png */,
@@ -291,7 +292,6 @@
 				E17372C0206DD73E005425AC /* wrong.png */,
 				E17372C1206DD73E005425AC /* plus.png */,
 				E17372C2206DD73E005425AC /* delete_disabled.png */,
-				E17372C3206DD73E005425AC /* title.png */,
 				E17372C4206DD73E005425AC /* minus_selected.png */,
 				E17372C5206DD73E005425AC /* 4399.png */,
 				E17372C6206DD73E005425AC /* divide.png */,
@@ -490,7 +490,7 @@
 				TargetAttributes = {
 					E1CBB12D206CFA0E0030871E = {
 						CreatedOnToolsVersion = 9.1;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 1;
@@ -559,6 +559,7 @@
 				E17372ED206DD73E005425AC /* reset.png in Resources */,
 				E17372E5206DD73E005425AC /* plus.png in Resources */,
 				E17372F9206DD73E005425AC /* next.png in Resources */,
+				395C517A2075B1BF00F0BA30 /* title.png in Resources */,
 				E17372BB206DD6C1005425AC /* background-music.m4a in Resources */,
 				E17372F2206DD73E005425AC /* delete_open.png in Resources */,
 				E17372F8206DD73E005425AC /* delete.png in Resources */,
@@ -592,7 +593,6 @@
 				E1CBB139206CFA0E0030871E /* Main.storyboard in Resources */,
 				E17372F1206DD73E005425AC /* minus.png in Resources */,
 				E1737300206DD73E005425AC /* AutoAtlas-1.png in Resources */,
-				E17372E7206DD73E005425AC /* title.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -850,19 +850,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = C35/C35.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Anthony Michael (P86Q59P84R)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Anthony Michael (P86Q59P84R)";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = P86Q59P84R;
-				GCC_PREFIX_HEADER = /Users/timemachine/WorkSpace/C35/C35/C35PrefixHeader.pch;
+				GCC_PREFIX_HEADER = /Users/xql/WorkSpace/C35/C35/C35PrefixHeader.pch;
 				INFOPLIST_FILE = C35/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = xueqiulou.C35;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				PROVISIONING_PROFILE = "0bb27531-376e-4db9-b263-4ed0ac426de8";
+				PROVISIONING_PROFILE_SPECIFIER = C35DistributionProfile20180405;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -872,19 +872,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = C35/C35.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Anthony Michael (8FZ4MK255X)";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Anthony Michael (P86Q59P84R)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Anthony Michael (P86Q59P84R)";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = P86Q59P84R;
-				GCC_PREFIX_HEADER = /Users/timemachine/WorkSpace/C35/C35/C35PrefixHeader.pch;
+				GCC_PREFIX_HEADER = /Users/xql/WorkSpace/C35/C35/C35PrefixHeader.pch;
 				INFOPLIST_FILE = C35/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = xueqiulou.C35;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				PROVISIONING_PROFILE = "0bb27531-376e-4db9-b263-4ed0ac426de8";
+				PROVISIONING_PROFILE_SPECIFIER = C35DistributionProfile20180405;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
