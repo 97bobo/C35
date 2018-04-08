@@ -1,5 +1,5 @@
 //
-//  SpeedListViewController.h
+//  RateListViewController.h
 //  C35
 //
 //  Created by TimeMachine on 2018/3/29.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SpeedListViewController : UIViewController
+@interface RateListViewController : UIViewController
 
 @end

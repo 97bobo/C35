@@ -1,5 +1,5 @@
 //
-//  GameListViewController.h
+//  GamesListViewController.h
 //  C35
 //
 //  Created by TimeMachine on 2018/3/29.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GameListViewController : UIViewController
+@interface GamesListViewController : UIViewController
 
 @end

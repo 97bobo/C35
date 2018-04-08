@@ -25,7 +25,7 @@
 #define bestTime @"bestTime"
 #define tipsCount @"tipsCount"
 
-#import "MyButton.h"
+#import "CustmerButton.h"
 #import "UIView+frame.h"
 
 static NSString * const CompletedGameNotification = @"CompletedGameNotification";

@@ -1,20 +1,20 @@
 //
-//  MyButton.m
+//  CustmerButton.m
 //  C35
 //
 //  Created by TimeMachine on 2018/3/30.
 //  Copyright © 2018年 TimeMachine. All rights reserved.
 //
 
-#import "MyButton.h"
+#import "CustmerButton.h"
 #import <AVFoundation/AVFoundation.h>
 
-@implementation MyButton
+@implementation CustmerButton
 {
     SystemSoundID soundFileObject;
 }
 
--(void)addTarget:(id)target action:(SEL)action forControlEvents:(UIControlEvents)controlEvents withSoundType:(SoundType)type
+-(void)addTarget:(id)target action:(SEL)action forControlEvents:(UIControlEvents)controlEvents withSomundrType:(SoundType)type
 {
     _type = type;
     [self addTarget:target action:action forControlEvents:controlEvents];
@@ -28,25 +28,25 @@
     NSString *name;
     switch (_type) {
         case SoundTypeNormal:
-            name = @"btn";
+            name = @"button";
             break;
         case SoundTypeFail:
-            name = @"wrong";
+            name = @"wrang";
             break;
         case SoundTypeSuccess:
-            name = @"success";
+            name = @"succcess";
             break;
         case SoundTypeCard:
-            name = @"card";
+            name = @"cared";
             break;
             
     }
-    !name?:[self playSoundEffect:name type:@"mp3"];
+    !name?:[self playdSoulndEffrect:name type:@"mp3"];
     [super touchesBegan:touches withEvent:event];
     
 }
 
-- (void)playSoundEffect:(NSString*)name type:(NSString*)type
+- (void)playdSoulndEffrect:(NSString*)name type:(NSString*)type
 
 {
     

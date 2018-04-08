@@ -1,5 +1,5 @@
 //
-//  GamingViewController.h
+//  PalyingGameViewController.h
 //  C35
 //
 //  Created by TimeMachine on 2018/3/30.
@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "QLHudView.h"
 
-@interface GamingViewController : UIViewController
+@interface PalyingGameViewController : UIViewController
 
 
 @property (nonatomic,assign) BOOL  isNeedTimer;

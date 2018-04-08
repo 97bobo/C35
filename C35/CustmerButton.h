@@ -1,5 +1,5 @@
 //
-//  MyButton.h
+//  CustmerButton.h
 //  C35
 //
 //  Created by TimeMachine on 2018/3/30.
@@ -15,9 +15,9 @@ typedef enum : NSUInteger {
     SoundTypeCard,
 } SoundType;
 
-@interface MyButton : UIButton
+@interface CustmerButton : UIButton
 
--(void)addTarget:(id)target action:(SEL)action forControlEvents:(UIControlEvents)controlEvents withSoundType:(SoundType)type;
+-(void)addTarget:(id)target action:(SEL)action forControlEvents:(UIControlEvents)controlEvents withSomundrType:(SoundType)type;
 @property (nonatomic,assign) SoundType type;
 
 @end

@@ -1,5 +1,5 @@
 //
-//  SpeedHomeViewController.h
+//  RateHomeViewController.h
 //  C35
 //
 //  Created by XQL on 2018/4/1.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SpeedHomeViewController : UIViewController
+@interface RateHomeViewController : UIViewController
 
 @end

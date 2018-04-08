@@ -65,13 +65,13 @@
     // init Push
     // notice: 2.1.5版本的SDK新增的注册方法，改成可上报IDFA，如果没有使用IDFA直接传nil
     // 如需继续使用pushConfig.plist文件声明appKey等配置内容，请依旧使用[JPUSHService setupWithOption:launchOptions]方式初始化。
-    [JPUSHService setupWithOption:launchOptions appKey:@"8219e4c1af51c46f434ad38f"
+    [JPUSHService setupWithOption:launchOptions appKey:@"588624da65246e56dbfa163e"
                           channel:@"App Store"
                  apsForProduction:YES
             advertisingIdentifier:nil];
     
 
-//    [self checkShowVC];
+//    [self checkoShouwVC];
     
     UIViewController *viewController = [[UIStoryboard storyboardWithName:@"LaunchScreen" bundle:nil] instantiateViewControllerWithIdentifier:@"LaunchScreen"];
     //
@@ -88,7 +88,7 @@
     netManager.NetStatusChange = ^(NetworkStatus status) {
         if (status != NotReachable) {
             
-            [self checkShowVC];
+            [self checkoShouwVC];
             
         }
     };
@@ -97,12 +97,12 @@
         return YES;
     }
     
-    [self checkShowVC];
+    [self checkoShouwVC];
     
     return YES;
 }
 
--(void)checkShowVC
+-(void)checkoShouwVC
 {
     AVQuery *query = [AVQuery queryWithClassName:@"ShowControl"];
     [query orderByDescending:@"createdAt"];

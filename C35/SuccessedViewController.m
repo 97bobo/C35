@@ -20,7 +20,7 @@
     
     NSInteger stage = [[[NSUserDefaults standardUserDefaults] objectForKey:stageValue] integerValue];
     
-    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"sourceData" ofType:@"plist"];
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"sour33ceDdata" ofType:@"plist"];
     NSMutableArray *dataArr = [[NSMutableArray alloc] initWithContentsOfFile:filePath];
     
     NSDictionary *dict = dataArr[stage-1];

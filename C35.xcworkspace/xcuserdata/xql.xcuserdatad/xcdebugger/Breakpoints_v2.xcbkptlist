@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "C35/AppDelegate.m"
-            timestampString = "544594774.827557"
+            timestampString = "544901004.378711"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "128"
             endingLineNumber = "128"
-            landmarkName = "-checkShowVC"
+            landmarkName = "-checkoShouwVC"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -41,61 +41,30 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "C35/AppDelegate.m"
-            timestampString = "544594774.827683"
+            filePath = "C35/CustmerButton.m"
+            timestampString = "544901004.378927"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "167"
-            endingLineNumber = "167"
-            landmarkName = "-checkShowVC"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "-playdSoulndEffrect:type:"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__26-[AppDelegate checkShowVC]_block_invoke"
-                  moduleName = "C35"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/xql/WorkSpace/C35/C35/AppDelegate.m"
-                  timestampString = "544587236.058538"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "170"
-                  endingLineNumber = "170"
-                  offsetFromSymbolStart = "1517">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__copy_helper_block_.115"
-                  moduleName = "C35"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/xql/WorkSpace/C35/C35/AppDelegate.m"
-                  timestampString = "544587236.060915"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "170"
-                  endingLineNumber = "170"
-                  offsetFromSymbolStart = "51">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__destroy_helper_block_.116"
-                  moduleName = "C35"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/xql/WorkSpace/C35/C35/AppDelegate.m"
-                  timestampString = "544587236.064199"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "170"
-                  endingLineNumber = "170"
-                  offsetFromSymbolStart = "29">
-               </Location>
-            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "C35/PalyingGameViewController.m"
+            timestampString = "544901004.378975"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "202"
+            endingLineNumber = "202"
+            landmarkName = "-metion:"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -1,18 +1,18 @@
 //
-//  SpeedListViewController.m
+//  RateListViewController.m
 //  C35
 //
 //  Created by TimeMachine on 2018/3/29.
 //  Copyright © 2018年 TimeMachine. All rights reserved.
 //
 
-#import "SpeedListViewController.h"
+#import "RateListViewController.h"
 
-@interface SpeedListViewController ()
+@interface RateListViewController ()
 
 @end
 
-@implementation SpeedListViewController
+@implementation RateListViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

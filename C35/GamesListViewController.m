@@ -1,25 +1,25 @@
 //
-//  GameListViewController.m
+//  GamesListViewController.m
 //  C35
 //
 //  Created by TimeMachine on 2018/3/29.
 //  Copyright © 2018年 TimeMachine. All rights reserved.
 //
 
-#import "GameListViewController.h"
-#import "GamingViewController.h"
-#import "MyButton.h"
+#import "GamesListViewController.h"
+#import "PalyingGameViewController.h"
+#import "CustmerButton.h"
 
 #define screenSize [UIScreen mainScreen].bounds.size
 
-@interface GameListViewController ()<UIScrollViewDelegate>
+@interface GamesListViewController ()<UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIView *leftView;
 @property (weak, nonatomic) IBOutlet UIView *rightView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @end
 
-@implementation GameListViewController
+@implementation GamesListViewController
 {
     NSInteger stage;
     UIPageControl *pageControl;
@@ -28,8 +28,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.scrollView.delegate = self;
-    [self createGameButton:16 superView:self.leftView page:1];
-    [self createGameButton:16 superView:self.rightView page:2];
+    [self createeGameaButton:16 superView:self.leftView page:1];
+    [self createeGameaButton:16 superView:self.rightView page:2];
 //    NSLog(@"%@",self.leftView);
     [self customNavigationView];
     
@@ -39,7 +39,7 @@
     pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, self.scrollView.xql_bottom+20, screenSize.width, 30)];
     pageControl.numberOfPages = 2;
     pageControl.currentPage = 0;
-    pageControl.currentPageIndicatorTintColor = [UIColor orangeColor];
+    pageControl.currentPageIndicatorTintColor = LGRGBColorAlpha(209, 198, 100, 1);
     pageControl.pageIndicatorTintColor = [UIColor lightGrayColor];
     
     [self.view addSubview:pageControl];
@@ -54,7 +54,7 @@
 -(void)nextQuestion:(NSNotification *)noti
 {
     stage = [[[NSUserDefaults standardUserDefaults] objectForKey:stageValue]integerValue];
-    [self performSegueWithIdentifier:@"playGame" sender:nil];
+    [self performSegueWithIdentifier:@"playyGuame" sender:nil];
 }
 
 -(void)refreshUI:(NSNotification *)noti
@@ -65,8 +65,8 @@
     for (UIView *subView in self.rightView.subviews) {
         [subView removeFromSuperview];
     }
-    [self createGameButton:16 superView:self.leftView page:1];
-    [self createGameButton:16 superView:self.rightView page:2];
+    [self createeGameaButton:16 superView:self.leftView page:1];
+    [self createeGameaButton:16 superView:self.rightView page:2];
 }
 
 
@@ -75,7 +75,7 @@
     UIView *navigationView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screenSize.width, 74)];
     navigationView.backgroundColor = [UIColor clearColor];
     
-    MyButton *backB = [MyButton buttonWithType:UIButtonTypeCustom];
+    CustmerButton *backB = [CustmerButton buttonWithType:UIButtonTypeCustom];
     backB.frame = CGRectMake(15, 30, 50, 40);
     [backB setImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
     [backB addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
@@ -85,18 +85,18 @@
     [self.view addSubview:navigationView];
 }
 
--(void)back:(MyButton *)sender
+-(void)back:(CustmerButton *)sender
 {
     [self.navigationController popViewControllerAnimated:YES];
     
 }
 
--(void)createGameButton:(NSInteger)index superView:(UIView *)superView page:(NSInteger)page
+-(void)createeGameaButton:(NSInteger)index superView:(UIView *)superView page:(NSInteger)page
 {
     
     NSInteger stage = [[[NSUserDefaults standardUserDefaults] objectForKey:stageValue] integerValue];
     for (int i=0; i<index; i++) {
-        MyButton *btn = [MyButton buttonWithType:UIButtonTypeCustom];
+        CustmerButton *btn = [CustmerButton buttonWithType:UIButtonTypeCustom];
         CGFloat width = (screenSize.width-30*2-15*3)*0.25;
         CGFloat height = width;
         btn.frame = CGRectMake(30+(15+width)*(i%4), 60+(15+height)*(i/4), width, height);
@@ -143,26 +143,26 @@
         btn.layer.cornerRadius = 5;
         btn.tag = 1000+i+(page==2?16:0);
         btn.titleLabel.font = [UIFont boldSystemFontOfSize:i==0?20.f:30.f];
-        [btn addTarget:self action:@selector(playGame:) forControlEvents:UIControlEventTouchUpInside withSoundType:SoundTypeNormal];
+        [btn addTarget:self action:@selector(playyGuame:) forControlEvents:UIControlEventTouchUpInside withSomundrType:SoundTypeNormal];
         [superView addSubview:btn];
     }
 }
 
 
--(void)playGame:(MyButton *)sender
+-(void)playyGuame:(CustmerButton *)sender
 {
     NSLog(@"我被点击了...");
     stage = sender.tag-1000;
-    [self performSegueWithIdentifier:@"playGame" sender:nil];
+    [self performSegueWithIdentifier:@"playyGuame" sender:nil];
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     
-    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"sourceData" ofType:@"plist"];
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"sour33ceDdata" ofType:@"plist"];
     NSMutableArray *dataArr = [[NSMutableArray alloc] initWithContentsOfFile:filePath];
     
-    GamingViewController *gamingVC = segue.destinationViewController;
+    PalyingGameViewController *gamingVC = segue.destinationViewController;
     gamingVC.questionDic = dataArr[stage];
     gamingVC.stageStr = [NSString stringWithFormat:@"%ld",stage];
     

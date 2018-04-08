@@ -1,14 +1,14 @@
 //
-//  GamingViewController.m
+//  PalyingGameViewController.m
 //  C35
 //
 //  Created by TimeMachine on 2018/3/30.
 //  Copyright © 2018年 TimeMachine. All rights reserved.
 //
 
-#import "GamingViewController.h"
+#import "PalyingGameViewController.h"
 #import "SuccessedViewController.h"
-#import "MyButton.h"
+#import "CustmerButton.h"
 #import "QLHudView.h"
 #import "UIView+frame.h"
 #import <AVFoundation/AVFoundation.h>
@@ -21,7 +21,7 @@ typedef enum : NSUInteger {
     CalculationTypeDivide,//除
 } CalculationType;
 
-@interface GamingViewController ()
+@interface PalyingGameViewController ()
 @property (weak, nonatomic) IBOutlet UIView *centerView;
 @property (weak, nonatomic) IBOutlet UIButton *plusB;
 @property (weak, nonatomic) IBOutlet UIButton *minusB;
@@ -31,27 +31,27 @@ typedef enum : NSUInteger {
 @property (weak, nonatomic) IBOutlet UILabel *timeL;
 @property (nonatomic,strong) NSTimer *timer;
 @property (weak, nonatomic) IBOutlet UIView *tipsView;
-@property (nonatomic,strong) MyButton *answerB;
+@property (nonatomic,strong) CustmerButton *answerB;
 
 @end
 
-@implementation GamingViewController
+@implementation PalyingGameViewController
 {
-    UIButton *currentSelectedNumberB;
-    UIButton *lastSelectedNumberB;
-    NSInteger currentResultNumber;
-    NSInteger nextNumber;
-    UIButton *currentSelectedCalculateB;
-    CalculationType currentCalculationType;
+    UIButton *currentrSelecterdNumrberB;
+    UIButton *lastSerelectedNerumberB;
+    NSInteger curresfntResultNsdumber;
+    NSInteger nsdextNusdmber;
+    UIButton *curresdnsdtSelectedCalsdculateB;
+    CalculationType currentsdCalculatsdionType;
     NSMutableArray *dataArr;
     NSDictionary *dic;
-    NSArray *currentNumbers;
+    NSArray *currentsdNsdumbers;
     NSInteger count;
     UIView *_bgView;
     UIView *_metionView;
-    SystemSoundID soundFileObject;
+    SystemSoundID sousdndFileOsdbject;
     AVAudioPlayer *_player;
-    NSInteger timerCount;
+    NSInteger timerfdCount;
     NSInteger replaceCount;
     NSInteger metionCount;
 }
@@ -64,7 +64,7 @@ typedef enum : NSUInteger {
     self.questionArr = @[].mutableCopy;
     
     if (_isNeedTimer) {
-        NSString *filePath = [[NSBundle mainBundle] pathForResource:@"sourceData" ofType:@"plist"];
+        NSString *filePath = [[NSBundle mainBundle] pathForResource:@"sour33ceDdata" ofType:@"plist"];
         NSMutableArray *dataArray = [[NSMutableArray alloc] initWithContentsOfFile:filePath];
         for (int randomCount=0; randomCount<10; randomCount++) {
             
@@ -72,10 +72,10 @@ typedef enum : NSUInteger {
             [self.questionArr addObject:dic];
         }
         self.questionDic = self.questionArr.firstObject;
-        currentNumbers = self.questionDic[@"numberArr"];
+        currentsdNsdumbers = self.questionDic[@"numberArr"];
     }else{
         
-        currentNumbers = self.questionDic[@"numberArr"];
+        currentsdNsdumbers = self.questionDic[@"numberArr"];
         self.tipsView.hidden = YES;
     }
     
@@ -91,7 +91,7 @@ typedef enum : NSUInteger {
     [self customNavigationView];
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self playSoundEffect:@"background-music" type:@"mp3"];
+        [self playdSoulndEffrect:@"backMusic" type:@"mp3"];
     });
     
 }
@@ -108,7 +108,7 @@ typedef enum : NSUInteger {
     UIView *navigationView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screenSize.width, 74)];
     navigationView.backgroundColor = [UIColor clearColor];
     
-    MyButton *backB = [MyButton buttonWithType:UIButtonTypeCustom];
+    CustmerButton *backB = [CustmerButton buttonWithType:UIButtonTypeCustom];
     backB.frame = CGRectMake(15, 30, 50, 40);
     [backB setImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
     [backB addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
@@ -147,7 +147,7 @@ typedef enum : NSUInteger {
     }
     
     
-    MyButton *answerB = [MyButton buttonWithType:UIButtonTypeCustom];
+    CustmerButton *answerB = [CustmerButton buttonWithType:UIButtonTypeCustom];
     self.answerB = answerB;
     answerB.frame = CGRectMake(navigationView.xql_width-50, 25, 50, 50);
     [answerB setBackgroundImage:[UIImage imageNamed:_isNeedTimer?@"delete.png":@"tips.png"] forState:UIControlStateNormal];
@@ -161,11 +161,12 @@ typedef enum : NSUInteger {
     }else{
         
         [self.answerB setTitle:[NSString stringWithFormat:@"%ld",3-metionCount] forState:UIControlStateNormal];
-    }
-    if (metionCount == 3) {
         
-        [self.answerB setBackgroundImage:[UIImage imageNamed:@"tips_disabled.png"] forState:UIControlStateNormal];
-        self.answerB.userInteractionEnabled = NO;
+        if (metionCount == 3) {
+            
+            [self.answerB setBackgroundImage:[UIImage imageNamed:@"tips_disabled.png"] forState:UIControlStateNormal];
+            self.answerB.userInteractionEnabled = NO;
+        }
     }
     
     
@@ -187,28 +188,28 @@ typedef enum : NSUInteger {
     for (UIView *view in self.centerView.subviews) {
         [view removeFromSuperview];
     }
-    currentSelectedNumberB = nil;
-    currentCalculationType = CalculationTypeNull;
-    currentResultNumber = 0;
+    currentrSelecterdNumrberB = nil;
+    currentsdCalculatsdionType = CalculationTypeNull;
+    curresfntResultNsdumber = 0;
     count = 0;
     [self createGameButton:4 superView:self.centerView];
     [self playButtonSoundName:@"reset" type:@"mp3"];
     
 }
 
--(void)metion:(MyButton *)sender
+-(void)metion:(CustmerButton *)sender
 {
     if (_isNeedTimer) {
         
         replaceCount++;
         
         [self.answerB setTitle:[NSString stringWithFormat:@"%ld",3-replaceCount] forState:UIControlStateNormal];
-        NSString *filePath = [[NSBundle mainBundle] pathForResource:@"replaceQuestions" ofType:@"plist"];
+        NSString *filePath = [[NSBundle mainBundle] pathForResource:@"replacsdeQuestisdons" ofType:@"plist"];
         NSMutableArray *dataArr = [[NSMutableArray alloc] initWithContentsOfFile:filePath];
         NSDictionary *dic = dataArr[arc4random()%dataArr.count];
         [self.questionArr replaceObjectAtIndex:[self.questionArr indexOfObject:self.questionDic] withObject:dic];
         self.questionDic = dic;
-        currentNumbers = self.questionDic[@"numberArr"];
+        currentsdNsdumbers = self.questionDic[@"numberArr"];
         [self refresh:nil];
         if (replaceCount == 3) {
             [self.answerB setBackgroundImage:[UIImage imageNamed:@"delete_disabled.png"] forState:UIControlStateNormal];
@@ -255,7 +256,7 @@ typedef enum : NSUInteger {
     answerView.center = CGPointMake(metionView.xql_width*0.5, metionView.xql_height*0.5+30);
     [metionView addSubview:answerView];
     
-//    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"sourceData" ofType:@"plist"];
+//    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"sour33ceDdata" ofType:@"plist"];
 //    NSMutableArray *dataArr = [[NSMutableArray alloc] initWithContentsOfFile:filePath];
 //    
 //    NSDictionary *dict = dataArr[self.stageStr.integerValue];
@@ -320,7 +321,7 @@ typedef enum : NSUInteger {
 -(void)createGameButton:(NSInteger)index superView:(UIView *)superView
 {
     for (int i=0; i<index; i++) {
-        MyButton *btn = [MyButton buttonWithType:UIButtonTypeCustom];
+        CustmerButton *btn = [CustmerButton buttonWithType:UIButtonTypeCustom];
         CGFloat width = (screenSize.width-60*2-lineSpace*1)*0.5;
         CGFloat height = width;
         btn.frame = CGRectMake(60+(lineSpace+width)*(i%2), 20+(lineSpace+height)*(i/2), width, height);
@@ -330,55 +331,55 @@ typedef enum : NSUInteger {
         [btn setBackgroundImage:[UIImage imageNamed:@"normal.png"] forState:UIControlStateNormal];
         [btn setBackgroundImage:[UIImage imageNamed:@"pressed.png"] forState:UIControlStateSelected];
 //        btn.layer.cornerRadius = 5;
-        [btn setTitle:currentNumbers[i] forState:UIControlStateNormal];
-        [btn addTarget:self action:@selector(selectOneNumbner:) forControlEvents:UIControlEventTouchUpInside withSoundType:SoundTypeCard];
+        [btn setTitle:currentsdNsdumbers[i] forState:UIControlStateNormal];
+        [btn addTarget:self action:@selector(selectOneNumbner:) forControlEvents:UIControlEventTouchUpInside withSomundrType:SoundTypeCard];
         [superView addSubview:btn];
     }
 }
 
--(void)selectOneNumbner:(MyButton *)sender
+-(void)selectOneNumbner:(CustmerButton *)sender
 {
-//    if (currentSelectedNumberB == sender) {
-//        currentSelectedNumberB.selected = !currentSelectedNumberB.selected;
-//        currentSelectedNumberB = nil;
-//        currentResultNumber = 0;
+//    if (currentrSelecterdNumrberB == sender) {
+//        currentrSelecterdNumrberB.selected = !currentrSelecterdNumrberB.selected;
+//        currentrSelecterdNumrberB = nil;
+//        curresfntResultNsdumber = 0;
 //        return;
 //    }
-//    currentSelectedNumberB.selected = !currentSelectedNumberB.selected;
-//    if (currentSelectedNumberB) {
-//        lastSelectedNumberB = currentSelectedNumberB;
+//    currentrSelecterdNumrberB.selected = !currentrSelecterdNumrberB.selected;
+//    if (currentrSelecterdNumrberB) {
+//        lastSerelectedNerumberB = currentrSelecterdNumrberB;
 //    }
-//    currentResultNumber = currentSelectedCalculateB.currentTitle.integerValue;
-//    currentSelectedNumberB = sender;
-//    currentSelectedNumberB.selected = !currentSelectedNumberB.selected;
+//    curresfntResultNsdumber = curresdnsdtSelectedCalsdculateB.currentTitle.integerValue;
+//    currentrSelecterdNumrberB = sender;
+//    currentrSelecterdNumrberB.selected = !currentrSelecterdNumrberB.selected;
     
-    if (currentResultNumber==0) {//还没选择数字,只是选择数字,不能进行运算
-        currentSelectedNumberB = sender;//设置当前选择数字按钮
-        currentSelectedNumberB.selected = !currentSelectedNumberB.selected;
-        currentResultNumber = sender.currentTitle.integerValue;//设置选择数字
+    if (curresfntResultNsdumber==0) {//还没选择数字,只是选择数字,不能进行运算
+        currentrSelecterdNumrberB = sender;//设置当前选择数字按钮
+        currentrSelecterdNumrberB.selected = !currentrSelecterdNumrberB.selected;
+        curresfntResultNsdumber = sender.currentTitle.integerValue;//设置选择数字
         return;
         
     }else{//已经选择过一个数字了
         
-        if (sender == currentSelectedNumberB) {
+        if (sender == currentrSelecterdNumrberB) {
             
-            currentResultNumber = 0;
-            currentSelectedNumberB.selected = !currentSelectedNumberB.selected;
+            curresfntResultNsdumber = 0;
+            currentrSelecterdNumrberB.selected = !currentrSelecterdNumrberB.selected;
             
         }else{
-            if (currentCalculationType == CalculationTypeNull) {//没有运算方式,只是切换当前选择数字
-                currentSelectedNumberB.selected = !currentSelectedNumberB.selected;
-                currentSelectedNumberB = sender;
-                currentSelectedNumberB.selected = !currentSelectedNumberB.selected;
-                currentResultNumber = currentSelectedNumberB.currentTitle.integerValue;
+            if (currentsdCalculatsdionType == CalculationTypeNull) {//没有运算方式,只是切换当前选择数字
+                currentrSelecterdNumrberB.selected = !currentrSelecterdNumrberB.selected;
+                currentrSelecterdNumrberB = sender;
+                currentrSelecterdNumrberB.selected = !currentrSelecterdNumrberB.selected;
+                curresfntResultNsdumber = currentrSelecterdNumrberB.currentTitle.integerValue;
                 return;
             }else{//已经有了运算方式,需要进行运算
                 
-                nextNumber = sender.currentTitle.integerValue;
-                lastSelectedNumberB = currentSelectedNumberB;
-                currentSelectedNumberB = sender;
-                lastSelectedNumberB.selected = false;
-                currentSelectedNumberB.selected = true;
+                nsdextNusdmber = sender.currentTitle.integerValue;
+                lastSerelectedNerumberB = currentrSelecterdNumrberB;
+                currentrSelecterdNumrberB = sender;
+                lastSerelectedNerumberB.selected = false;
+                currentrSelecterdNumrberB.selected = true;
                 
                 count++;
             }
@@ -387,12 +388,12 @@ typedef enum : NSUInteger {
         
     }
     
-    if (currentResultNumber) {
+    if (curresfntResultNsdumber) {
         
-        switch (currentCalculationType) {
+        switch (currentsdCalculatsdionType) {
             case CalculationTypePlus:{//加法
                 
-                currentResultNumber = currentResultNumber+nextNumber;
+                curresfntResultNsdumber = curresfntResultNsdumber+nsdextNusdmber;
                 NSLog(@"进行了加法...");
                 
                 break;
@@ -400,19 +401,19 @@ typedef enum : NSUInteger {
             }
             case CalculationTypeMinus:{//减法
                 
-                currentResultNumber = currentResultNumber-nextNumber;
+                curresfntResultNsdumber = curresfntResultNsdumber-nsdextNusdmber;
                 NSLog(@"进行了减法...");
                 break;
             }
             case CalculationTypeMultiple:{//乘法
                 
-                currentResultNumber = currentResultNumber*nextNumber;
+                curresfntResultNsdumber = curresfntResultNsdumber*nsdextNusdmber;
                 NSLog(@"进行了乘法...");
                 break;
             }
             case CalculationTypeDivide:{//除法
                 
-                currentResultNumber = currentResultNumber/nextNumber;
+                curresfntResultNsdumber = curresfntResultNsdumber/nsdextNusdmber;
                 NSLog(@"进行了除法...");
                 break;
             }
@@ -422,27 +423,27 @@ typedef enum : NSUInteger {
                 return;
             }
         }
-        currentCalculationType = CalculationTypeNull;
-        currentSelectedCalculateB.selected = !currentSelectedCalculateB.selected;
-        currentSelectedNumberB.selected = YES;
+        currentsdCalculatsdionType = CalculationTypeNull;
+        curresdnsdtSelectedCalsdculateB.selected = !curresdnsdtSelectedCalsdculateB.selected;
+        currentrSelecterdNumrberB.selected = YES;
         
         
         [UIView animateWithDuration:0.5 animations:^{
             
-            lastSelectedNumberB.frame = currentSelectedNumberB.frame;
-            lastSelectedNumberB.alpha = 0;
-            [currentSelectedNumberB setTitle:[NSString stringWithFormat:@"%ld",currentResultNumber] forState:UIControlStateNormal];
-            [currentSelectedNumberB setTitle:[NSString stringWithFormat:@"%ld",currentResultNumber] forState:UIControlStateSelected];
+            lastSerelectedNerumberB.frame = currentrSelecterdNumrberB.frame;
+            lastSerelectedNerumberB.alpha = 0;
+            [currentrSelecterdNumrberB setTitle:[NSString stringWithFormat:@"%ld",curresfntResultNsdumber] forState:UIControlStateNormal];
+            [currentrSelecterdNumrberB setTitle:[NSString stringWithFormat:@"%ld",curresfntResultNsdumber] forState:UIControlStateSelected];
             
             
         }];
         
         if (count == 3) {
-            if (currentResultNumber == 35) {//计算成功!!!
+            if (curresfntResultNsdumber == 35) {//计算成功!!!
 //                [QLHudView showAlertViewWithText:@"Success,Congratulations!!!" duration:2.f];
-                [self playButtonSoundName:@"success" type:@"mp3"];
+                [self playButtonSoundName:@"succcess" type:@"mp3"];
                 [UIView animateWithDuration:0.5 animations:^{
-                    currentSelectedNumberB.frame = CGRectMake(self.centerView.frame.size.width*0.5-currentSelectedNumberB.frame.size.width*0.5, self.centerView.frame.size.height*0.5-currentSelectedNumberB.frame.size.height*0.5, currentSelectedNumberB.frame.size.width, currentSelectedNumberB.frame.size.height);
+                    currentrSelecterdNumrberB.frame = CGRectMake(self.centerView.frame.size.width*0.5-currentrSelecterdNumrberB.frame.size.width*0.5, self.centerView.frame.size.height*0.5-currentrSelecterdNumrberB.frame.size.height*0.5, currentrSelecterdNumrberB.frame.size.width, currentrSelecterdNumrberB.frame.size.height);
                 } completion:^(BOOL finished) {
                     if (finished) {
                         
@@ -453,19 +454,19 @@ typedef enum : NSUInteger {
                             [self performSegueWithIdentifier:@"successed" sender:nil];
                             [self.navigationController popViewControllerAnimated:NO];
                         }else{//计时模式,在取好的十道题中依次展示
-                            timerCount++;
-                            if (timerCount==10) {
+                            timerfdCount++;
+                            if (timerfdCount==10) {
                                 [self.timer invalidate];
-                                self.progressL.text = [NSString stringWithFormat:@"%ld/10",timerCount];
+                                self.progressL.text = [NSString stringWithFormat:@"%ld/10",timerfdCount];
                                 [[NSUserDefaults standardUserDefaults] setObject:self.timeL.text forKey:bestTime];
                                 [[NSUserDefaults standardUserDefaults]synchronize];
                                 return ;
                             }
-                            self.questionDic = self.questionArr[timerCount];
-                            currentNumbers = self.questionDic[@"numberArr"];
+                            self.questionDic = self.questionArr[timerfdCount];
+                            currentsdNsdumbers = self.questionDic[@"numberArr"];
                             [self refresh:nil];
                             
-                            self.progressL.text = [NSString stringWithFormat:@"%ld/10",timerCount+1];
+                            self.progressL.text = [NSString stringWithFormat:@"%ld/10",timerfdCount+1];
                             
                         }
                     }
@@ -475,14 +476,14 @@ typedef enum : NSUInteger {
             }else{
 //                [QLHudView showAlertViewWithText:@"Wrong!!!" duration:2.f];
                 
-                [self playButtonSoundName:@"wrong" type:@"mp3"];
-                [currentSelectedNumberB setBackgroundImage:[UIImage imageNamed:@"wrong.png"] forState:UIControlStateNormal];
-                [currentSelectedNumberB setBackgroundImage:[UIImage imageNamed:@"wrong.png"] forState:UIControlStateSelected];
+                [self playButtonSoundName:@"wrang" type:@"mp3"];
+                [currentrSelecterdNumrberB setBackgroundImage:[UIImage imageNamed:@"wrong.png"] forState:UIControlStateNormal];
+                [currentrSelecterdNumrberB setBackgroundImage:[UIImage imageNamed:@"wrong.png"] forState:UIControlStateSelected];
             }
         }
         
     }else{
-        currentResultNumber = sender.currentTitle.integerValue;
+        curresfntResultNsdumber = sender.currentTitle.integerValue;
     }
     
     
@@ -490,34 +491,34 @@ typedef enum : NSUInteger {
 
 - (IBAction)clickCalculationSymbol:(UIButton *)sender {
     
-    if (sender == currentSelectedCalculateB&&currentSelectedCalculateB.selected == YES) {
+    if (sender == curresdnsdtSelectedCalsdculateB&&curresdnsdtSelectedCalsdculateB.selected == YES) {
         sender.selected = !sender.selected;
-        currentCalculationType = CalculationTypeNull;
+        currentsdCalculatsdionType = CalculationTypeNull;
         return;
     }
     //    tag:+-x/:1000~1003
-    currentSelectedCalculateB.selected = !currentSelectedCalculateB;
-    currentSelectedCalculateB = sender;
+    curresdnsdtSelectedCalsdculateB.selected = !curresdnsdtSelectedCalsdculateB;
+    curresdnsdtSelectedCalsdculateB = sender;
     switch (sender.tag) {
         case 1000:{//加法
             
-            currentCalculationType = CalculationTypePlus;
+            currentsdCalculatsdionType = CalculationTypePlus;
             break;
             
         }
         case 1001:{//减法
             
-            currentCalculationType = CalculationTypeMinus;
+            currentsdCalculatsdionType = CalculationTypeMinus;
             break;
         }
         case 1002:{//乘法
             
-            currentCalculationType = CalculationTypeMultiple;
+            currentsdCalculatsdionType = CalculationTypeMultiple;
             break;
         }
         case 1003:{//除法
             
-            currentCalculationType = CalculationTypeDivide;
+            currentsdCalculatsdionType = CalculationTypeDivide;
             break;
         }
             
@@ -527,18 +528,18 @@ typedef enum : NSUInteger {
 }
 
 
-- (void)playSoundEffect:(NSString*)name type:(NSString*)type
+- (void)playdSoulndEffrect:(NSString*)name type:(NSString*)type
 
 {
     
     //得到音效文件的地址
     
-//    NSString*soundFilePath =[[NSBundle mainBundle] URLForResource:@"background-music.mp3" withExtension:nil];
+//    NSString*soundFilePath =[[NSBundle mainBundle] URLForResource:@"backMusic.mp3" withExtension:nil];
     
     
     //将地址字符串转换成url
     
-    NSURL*soundURL =[[NSBundle mainBundle] URLForResource:@"background-music.mp3" withExtension:nil];
+    NSURL*soundURL =[[NSBundle mainBundle] URLForResource:@"backMusic.mp3" withExtension:nil];
     
     
     // 取出资源的URL
@@ -558,11 +559,11 @@ typedef enum : NSUInteger {
     
 //    //生成系统音效id
 //
-//    AudioServicesCreateSystemSoundID((__bridge CFURLRef)soundURL, &soundFileObject);
+//    AudioServicesCreateSystemSoundID((__bridge CFURLRef)soundURL, &sousdndFileOsdbject);
 //
 //    //播放系统音效
 //
-//    AudioServicesPlaySystemSound(soundFileObject);
+//    AudioServicesPlaySystemSound(sousdndFileOsdbject);
     
 }
 
@@ -593,11 +594,11 @@ typedef enum : NSUInteger {
     
     //生成系统音效id
     
-    AudioServicesCreateSystemSoundID((__bridge CFURLRef)soundURL, &soundFileObject);
+    AudioServicesCreateSystemSoundID((__bridge CFURLRef)soundURL, &sousdndFileOsdbject);
     
     //播放系统音效
     
-    AudioServicesPlaySystemSound(soundFileObject);
+    AudioServicesPlaySystemSound(sousdndFileOsdbject);
     
 }
 

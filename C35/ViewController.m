@@ -25,9 +25,9 @@
     
 //    [self performSegueWithIdentifier:@"pushdemo" sender:sender];
     
-    AVObject *testObject = [AVObject objectWithClassName:@"TestObject"];
-    [testObject setObject:@"bar" forKey:@"foo"];
-    [testObject save];
+//    AVObject *testObject = [AVObject objectWithClassName:@"TestObject"];
+//    [testObject setObject:@"bar" forKey:@"foo"];
+//    [testObject save];
     
 }
 
