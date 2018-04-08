@@ -7,7 +7,7 @@
 //
 
 #import "LGWebViewController.h"
-#import "NetStatusManager.h"
+#import "NetWorkStatusManager.h"
 
 @interface LGWebViewController ()<WKNavigationDelegate,WKUIDelegate,UINavigationControllerDelegate,UIGestureRecognizerDelegate>
 
@@ -43,7 +43,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    NetStatusManager *netManager = [NetStatusManager manager];
+    NetWorkStatusManager *netManager = [NetWorkStatusManager manager];
     if (netManager.currentStatus == NotReachable) {
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"No NetWork!" message:nil preferredStyle:UIAlertControllerStyleAlert] ;
         UIAlertAction *actin = [UIAlertAction actionWithTitle:@"Sure" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {

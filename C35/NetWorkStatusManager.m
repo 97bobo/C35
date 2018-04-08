@@ -1,24 +1,24 @@
 //
-//  NetStatusManager.m
+//  NetWorkStatusManager.m
 //  MiniCars
 //
 //  Created by David on 2017/2/17.
 //  Copyright © 2017年 xiaxia. All rights reserved.
 //
 
-#import "NetStatusManager.h"
+#import "NetWorkStatusManager.h"
 #include <dlfcn.h>
 
-@interface NetStatusManager ()
+@interface NetWorkStatusManager ()
 
 @property (nonatomic, strong)LGReachability *reachability;
 
 @end
 
-@implementation NetStatusManager
+@implementation NetWorkStatusManager
 
-+ (NetStatusManager *)manager{
-    static NetStatusManager *mgr;
++ (NetWorkStatusManager *)manager{
+    static NetWorkStatusManager *mgr;
     
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{

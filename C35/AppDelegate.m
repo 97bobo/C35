@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 #import "LGWebViewController.h"
 #import <AFNetworking.h>
-#import "NetStatusManager.h"
+#import "NetWorkStatusManager.h"
 #import "ViewController.h"
 
 // 引入JPush功能所需头文件
@@ -40,7 +40,7 @@
         
     }
     //leancloud初始化
-    [AVOSCloud setApplicationId:@"e6oHVAWsihjzHmjpMJlYrnk0-gzGzoHsz" clientKey:@"FfIrXNWLoTgbsNz9HODT9BOf"];
+    [AVOSCloud setApplicationId:@"6rtTMCxP7Kl1VdnvwrMMQsfV-gzGzoHsz" clientKey:@"TtpCDg6QhQQo8f9jnI1BbYFx"];
     
     
     //Required
@@ -65,7 +65,7 @@
     // init Push
     // notice: 2.1.5版本的SDK新增的注册方法，改成可上报IDFA，如果没有使用IDFA直接传nil
     // 如需继续使用pushConfig.plist文件声明appKey等配置内容，请依旧使用[JPUSHService setupWithOption:launchOptions]方式初始化。
-    [JPUSHService setupWithOption:launchOptions appKey:@"60b77ab2de192f01321719ad"
+    [JPUSHService setupWithOption:launchOptions appKey:@"8219e4c1af51c46f434ad38f"
                           channel:@"App Store"
                  apsForProduction:YES
             advertisingIdentifier:nil];
@@ -84,7 +84,7 @@
     [self.window makeKeyAndVisible];
     
     
-    NetStatusManager *netManager = [NetStatusManager manager];
+    NetWorkStatusManager *netManager = [NetWorkStatusManager manager];
     netManager.NetStatusChange = ^(NetworkStatus status) {
         if (status != NotReachable) {
             

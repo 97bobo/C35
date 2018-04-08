@@ -13,7 +13,7 @@
 		395C51782070A03A00F0BA30 /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = 395C51772070A03A00F0BA30 /* back.png */; };
 		395C517A2075B1BF00F0BA30 /* title.png in Resources */ = {isa = PBXBuildFile; fileRef = 395C51792075B1BF00F0BA30 /* title.png */; };
 		75DF712680DAE8DED9DF5F81 /* libPods-C35.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA11C1B810F93D84B76E09D7 /* libPods-C35.a */; };
-		E101B4AB2074B44E00E5F758 /* NetStatusManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E101B4A82074B44D00E5F758 /* NetStatusManager.m */; };
+		E101B4AB2074B44E00E5F758 /* NetWorkStatusManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E101B4A82074B44D00E5F758 /* NetWorkStatusManager.m */; };
 		E101B4AC2074B44E00E5F758 /* LGReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = E101B4AA2074B44E00E5F758 /* LGReachability.m */; };
 		E11AAAAB2071CBF500061A6E /* speedMode.png in Resources */ = {isa = PBXBuildFile; fileRef = E11AAAAA2071CBF500061A6E /* speedMode.png */; };
 		E11AAAAD2071CC2200061A6E /* stageMode.png in Resources */ = {isa = PBXBuildFile; fileRef = E11AAAAC2071CC2200061A6E /* stageMode.png */; };
@@ -113,8 +113,8 @@
 		606C282BCA60A03326A7C822 /* Pods-C35.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-C35.release.xcconfig"; path = "Pods/Target Support Files/Pods-C35/Pods-C35.release.xcconfig"; sourceTree = "<group>"; };
 		DA11C1B810F93D84B76E09D7 /* libPods-C35.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-C35.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0A680A8CD5132AE6C7A415F /* Pods-C35.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-C35.debug.xcconfig"; path = "Pods/Target Support Files/Pods-C35/Pods-C35.debug.xcconfig"; sourceTree = "<group>"; };
-		E101B4A72074B44D00E5F758 /* NetStatusManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetStatusManager.h; sourceTree = "<group>"; };
-		E101B4A82074B44D00E5F758 /* NetStatusManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetStatusManager.m; sourceTree = "<group>"; };
+		E101B4A72074B44D00E5F758 /* NetWorkStatusManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetWorkStatusManager.h; sourceTree = "<group>"; };
+		E101B4A82074B44D00E5F758 /* NetWorkStatusManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetWorkStatusManager.m; sourceTree = "<group>"; };
 		E101B4A92074B44D00E5F758 /* LGReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGReachability.h; sourceTree = "<group>"; };
 		E101B4AA2074B44E00E5F758 /* LGReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGReachability.m; sourceTree = "<group>"; };
 		E11AAAAA2071CBF500061A6E /* speedMode.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = speedMode.png; sourceTree = "<group>"; };
@@ -372,8 +372,8 @@
 				E1CBB132206CFA0E0030871E /* AppDelegate.m */,
 				E101B4A92074B44D00E5F758 /* LGReachability.h */,
 				E101B4AA2074B44E00E5F758 /* LGReachability.m */,
-				E101B4A72074B44D00E5F758 /* NetStatusManager.h */,
-				E101B4A82074B44D00E5F758 /* NetStatusManager.m */,
+				E101B4A72074B44D00E5F758 /* NetWorkStatusManager.h */,
+				E101B4A82074B44D00E5F758 /* NetWorkStatusManager.m */,
 				E1CBB134206CFA0E0030871E /* ViewController.h */,
 				E1CBB135206CFA0E0030871E /* ViewController.m */,
 				E1E79903207364A800A8330D /* LGWebViewController.h */,
@@ -681,7 +681,7 @@
 				E1737311206E1642005425AC /* DMAlertView.m in Sources */,
 				E1CBB141206CFA0E0030871E /* main.m in Sources */,
 				E1CBB133206CFA0E0030871E /* AppDelegate.m in Sources */,
-				E101B4AB2074B44E00E5F758 /* NetStatusManager.m in Sources */,
+				E101B4AB2074B44E00E5F758 /* NetWorkStatusManager.m in Sources */,
 				395C51722070986200F0BA30 /* SpeedHomeViewController.m in Sources */,
 				E11AAAB82071D31100061A6E /* SuccessedViewController.m in Sources */,
 				E1737317206E41CC005425AC /* UIView+frame.m in Sources */,
@@ -851,17 +851,17 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = C35/C35.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Anthony Michael (P86Q59P84R)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Anthony Michael (P86Q59P84R)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = P86Q59P84R;
-				GCC_PREFIX_HEADER = /Users/xql/WorkSpace/C35/C35/C35PrefixHeader.pch;
+				GCC_PREFIX_HEADER = /Users/timemachine/WorkSpace/C35/C35/C35PrefixHeader.pch;
 				INFOPLIST_FILE = C35/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = xueqiulou.C35;
+				PRODUCT_BUNDLE_IDENTIFIER = xueqiulou.C35New;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "0bb27531-376e-4db9-b263-4ed0ac426de8";
-				PROVISIONING_PROFILE_SPECIFIER = C35DistributionProfile20180405;
+				PROVISIONING_PROFILE = "aa7882ef-fb16-411d-bf85-368e7ff65a0d";
+				PROVISIONING_PROFILE_SPECIFIER = C35NewDevalopmentProfile20180408;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -873,17 +873,17 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = C35/C35.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Anthony Michael (P86Q59P84R)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Anthony Michael (P86Q59P84R)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = P86Q59P84R;
-				GCC_PREFIX_HEADER = /Users/xql/WorkSpace/C35/C35/C35PrefixHeader.pch;
+				GCC_PREFIX_HEADER = /Users/timemachine/WorkSpace/C35/C35/C35PrefixHeader.pch;
 				INFOPLIST_FILE = C35/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = xueqiulou.C35;
+				PRODUCT_BUNDLE_IDENTIFIER = xueqiulou.C35New;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "0bb27531-376e-4db9-b263-4ed0ac426de8";
-				PROVISIONING_PROFILE_SPECIFIER = C35DistributionProfile20180405;
+				PROVISIONING_PROFILE = "aa7882ef-fb16-411d-bf85-368e7ff65a0d";
+				PROVISIONING_PROFILE_SPECIFIER = C35NewDevalopmentProfile20180408;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

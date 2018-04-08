@@ -1,5 +1,5 @@
 //
-//  NetStatusManager.h
+//  NetWorkStatusManager.h
 //  MiniCars
 //
 //  Created by David on 2017/2/17.
@@ -11,13 +11,13 @@
 
 typedef void(^NetStatusChange)(NetworkStatus status);
 
-@interface NetStatusManager : NSObject
+@interface NetWorkStatusManager : NSObject
 
 @property (nonatomic, assign) NetworkStatus status;
 
 @property (nonatomic, copy)NetStatusChange NetStatusChange;
 
-+ (NetStatusManager *)manager;
++ (NetWorkStatusManager *)manager;
 
 
 
